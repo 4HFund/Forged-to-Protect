@@ -1,15 +1,14 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
   <title>Forged to Protect | Community First Responder Event</title>
   
   <!-- Optimized Font Loading -->
-  <link rel="preconnect" href="[https://fonts.googleapis.com](https://fonts.googleapis.com)">
-  <link rel="preconnect" href="[https://fonts.gstatic.com](https://fonts.gstatic.com)" crossorigin>
-  <link href="[https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap](https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap)" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
   
   <style>
     :root {
@@ -32,6 +31,7 @@
       background: var(--navy);
       color: var(--white);
       overflow-x: hidden;
+      width: 100%;
     }
 
     /* ── UTILITY CLASSES ── */
@@ -52,7 +52,7 @@
       content: '';
       position: fixed;
       inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='[http://www.w3.org/2000/svg'%3E%3Cfilter](http://www.w3.org/2000/svg'%3E%3Cfilter) id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
       pointer-events: none;
       z-index: 9999;
       opacity: 0.5;
@@ -166,6 +166,7 @@
       position: relative;
       z-index: 2;
       max-width: 1000px;
+      width: 100%;
     }
 
     .pill {
@@ -182,18 +183,22 @@
       text-transform: uppercase;
       letter-spacing: 2px;
       margin-bottom: 32px;
+      max-width: 100%;
+      text-align: center;
+      line-height: 1.4;
     }
 
     .pill::before { content: '★'; font-size: 0.7rem; }
 
     h1 {
       font-family: 'Barlow Condensed', sans-serif;
-      font-size: clamp(4rem, 12vw, 9rem);
+      font-size: clamp(3.5rem, 12vw, 9rem);
       font-weight: 900;
       line-height: 0.88;
       text-transform: uppercase;
       letter-spacing: -2px;
       margin-bottom: 28px;
+      word-wrap: break-word;
     }
 
     h1 em {
@@ -205,11 +210,12 @@
 
     .hero-sub {
       font-size: clamp(1rem, 2vw, 1.2rem);
-      color: rgba(255,255,255,0.65);
+      color: rgba(255,255,255,0.8);
       max-width: 680px;
       margin: 0 auto 48px;
       line-height: 1.8;
       font-weight: 400;
+      padding: 0 10px;
     }
 
     /* ── DETAIL STRIP ── */
@@ -256,7 +262,7 @@
 
     .cd-num {
       font-family: 'Barlow Condensed', sans-serif;
-      font-size: clamp(2.8rem, 7vw, 4.5rem);
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
       font-weight: 900;
       line-height: 1;
       color: var(--white);
@@ -309,6 +315,7 @@
     .btn {
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       gap: 8px;
       padding: 16px 32px;
       border-radius: 999px;
@@ -317,6 +324,7 @@
       text-decoration: none;
       transition: all 0.25s;
       letter-spacing: 0.5px;
+      text-align: center;
     }
 
     .btn-primary {
@@ -344,7 +352,7 @@
     /* ── SCROLL INDICATOR ── */
     .scroll-hint {
       position: absolute;
-      bottom: 36px;
+      bottom: 24px;
       left: 50%;
       transform: translateX(-50%);
       display: flex;
@@ -375,7 +383,7 @@
     ════════════════════════════ */
     .section { padding: 100px 24px; }
 
-    .container { max-width: 1140px; margin: 0 auto; }
+    .container { max-width: 1140px; margin: 0 auto; width: 100%; }
 
     .eyebrow {
       display: inline-flex;
@@ -399,11 +407,12 @@
 
     .section-h { 
       font-family: 'Barlow Condensed', sans-serif;
-      font-size: clamp(2.4rem, 5vw, 4rem);
+      font-size: clamp(2.2rem, 6vw, 4rem);
       font-weight: 900;
       text-transform: uppercase;
       line-height: 0.95;
       letter-spacing: -1px;
+      word-wrap: break-word;
     }
 
     /* ABOUT – light */
@@ -482,7 +491,7 @@
     .who-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 2px;
+      gap: 16px;
       margin-top: 56px;
     }
 
@@ -493,6 +502,7 @@
       position: relative;
       overflow: hidden;
       transition: background 0.3s;
+      border-radius: 12px;
     }
 
     .who-card::before {
@@ -564,7 +574,7 @@
 
     .callout-inner h2 {
       font-family: 'Barlow Condensed', sans-serif;
-      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-size: clamp(2rem, 6vw, 3.2rem);
       font-weight: 900;
       text-transform: uppercase;
       line-height: 1;
@@ -577,7 +587,6 @@
       background: white; 
       color: #7f1d1d; 
       font-weight: 800; 
-      white-space: nowrap; 
       flex-shrink: 0;
     }
     
@@ -631,7 +640,7 @@
       font-family: 'Barlow', sans-serif;
       color: var(--white);
       transition: border 0.2s, background 0.2s, box-shadow 0.2s;
-      outline: transparent; /* Changed from none for a11y, handled by focus */
+      outline: transparent;
     }
 
     .field input::placeholder,
@@ -642,7 +651,7 @@
     .field textarea:focus {
       border-color: var(--orange);
       background: rgba(249,115,22,0.06);
-      box-shadow: 0 0 0 2px rgba(249,115,22,0.2); /* Added visible focus ring */
+      box-shadow: 0 0 0 2px rgba(249,115,22,0.2); 
     }
 
     .field select option { background: #131d2e; color: white; }
@@ -712,30 +721,71 @@
     }
 
     /* ════════════════════════════
-       RESPONSIVE
+       RESPONSIVE - MOBILE OPTIMIZED
     ════════════════════════════ */
     @media (max-width: 820px) {
-      nav { padding: 16px 20px; }
+      nav { padding: 14px 16px; }
+      .nav-logo { font-size: 1.1rem; } /* Shrink logo slightly to prevent squishing */
       .nav-links { display: none; }
 
-      h1 { font-size: clamp(3.4rem, 15vw, 5.5rem); }
-      h1 em { -webkit-text-stroke-width: 1.5px; }
+      .hero { padding: 120px 16px 60px; }
+      h1 { 
+        font-size: clamp(2.8rem, 12vw, 4.5rem); /* Reduced minimum font size from 3.5 to 2.8 */
+        margin-bottom: 20px;
+      }
+      h1 em { -webkit-text-stroke-width: 1px; } /* Thinner stroke on small screens */
 
-      .detail-strip { gap: 4px; }
-      .ds-item:first-child { border-radius: 14px 14px 0 0; }
-      .ds-item:last-child  { border-radius: 0 0 14px 14px; }
-      .ds-item { width: 100%; justify-content: center; text-align: center; }
+      .hero-sub { font-size: 1rem; margin-bottom: 36px; }
 
-      .countdown { gap: 10px; }
-      .cd-num { width: 72px; height: 72px; font-size: 2.2rem; }
-      .cd-sep { font-size: 2rem; margin-top: 2px; }
+      /* Let buttons stack and span 100% width to save horizontal space */
+      .btn-group { flex-direction: column; width: 100%; gap: 12px; }
+      .btn { width: 100%; }
 
+      .detail-strip { gap: 6px; }
+      .ds-item { 
+        width: 100%; 
+        justify-content: flex-start; 
+        padding: 16px 20px; 
+      }
+      .ds-item:first-child { border-radius: 12px 12px 0 0; }
+      .ds-item:last-child  { border-radius: 0 0 12px 12px; }
+
+      /* Fix the countdown spilling horizontally */
+      .countdown { gap: 8px; flex-wrap: wrap; }
+      .cd-box { min-width: 64px; }
+      .cd-num { width: 64px; height: 64px; font-size: 1.8rem; border-radius: 10px; }
+      .cd-sep { font-size: 2rem; margin-top: 8px; }
+
+      .section { padding: 60px 16px; } /* Thinner paddings for mobile screens */
+      
       .about-grid  { grid-template-columns: 1fr; gap: 40px; }
-      .who-grid    { grid-template-columns: 1fr; }
+      .about-section::before { display: none; } /* Hide the massive HONOR text; it can force wide viewports */
+      
+      .feat-card { 
+        flex-direction: column; 
+        align-items: center; 
+        text-align: center; 
+        padding: 24px; 
+      }
+
+      .who-grid    { grid-template-columns: 1fr; margin-top: 32px; gap: 12px; }
+      .who-card    { padding: 24px 20px; }
+      
+      .callout-section { padding: 50px 16px; }
+      .callout-inner { flex-direction: column; gap: 24px; text-align: center; }
+      .callout-btn { width: 100%; white-space: normal; } /* Allowed text to wrap inside the button */
+
       .form-grid   { grid-template-columns: 1fr; }
       .form-full   { grid-column: 1; }
-      .form-shell  { padding: 28px 20px; }
-      .callout-inner { flex-direction: column; gap: 24px; text-align: center;}
+      .form-shell  { padding: 24px 16px; border-radius: 16px; }
+    }
+
+    /* Extra tight safeguard for very small phones (like iPhone SE) */
+    @media (max-width: 380px) {
+      .cd-num { width: 54px; height: 54px; font-size: 1.5rem; }
+      .cd-sep { display: none; } /* Hide the colons to save horizontal space */
+      .countdown { gap: 12px; }
+      .nav-logo { font-size: 0.95rem; }
     }
   </style>
 </head>
@@ -1051,3 +1101,4 @@
 
 </body>
 </html>
+
