@@ -1,5 +1,5 @@
+```html
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -219,27 +219,7 @@
       line-height: 1.85;
     }
 
-    /* live indicator */
-    .live-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      background: rgba(34,197,94,0.08);
-      border: 1px solid rgba(34,197,94,0.3);
-      color: #86efac;
-      padding: 10px 22px;
-      border-radius: 2px;
-      font-size: 0.82rem;
-      font-weight: 700;
-      margin-bottom: 40px;
-    }
-    .live-dot {
-      width: 8px;
-      height: 8px;
-      background: var(--green);
-      border-radius: 50%;
-      animation: pulse 1.4s ease-in-out infinite;
-    }
+    /* shared animation */
     @keyframes pulse {
       0%, 100% { opacity: 1; transform: scale(1); }
       50% { opacity: 0.5; transform: scale(0.7); }
@@ -1075,6 +1055,11 @@
       transform: translateY(-3px);
       box-shadow: 0 28px 60px rgba(249,115,22,0.5);
     }
+    .submit-btn:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+      transform: none;
+    }
 
     /* ─── FOOTER ─── */
     footer {
@@ -1179,12 +1164,10 @@
       .cd-sep { display: none; }
     }
   </style>
-
 </head>
 <body>
 
   <!-- NAV -->
-
   <nav>
     <div class="nav-logo">Forged to <span>Protect</span></div>
     <ul class="nav-links">
@@ -1198,186 +1181,169 @@
   </nav>
 
   <!-- HERO -->
-
   <header class="hero" id="top">
     <div class="hero-bg"></div>
     <div class="hero-sweep"></div>
+    <div class="hero-content">
+      <div class="event-badge">Community Event · Honoring First Responders &amp; Veterans</div>
 
-```
-<div class="hero-content">
-  <div class="event-badge">Community Event · Honoring First Responders &amp; Veterans</div>
+      <h1 class="hero-title">
+        <span class="line1">Forged</span>
+        <span class="line2">to Protect</span>
+      </h1>
 
-  <h1 class="hero-title">
-    <span class="line1">Forged</span>
-    <span class="line2">to Protect</span>
-  </h1>
+      <p class="hero-subtitle">
+        May 16, 2026 &nbsp;·&nbsp; <span>The Foundery Church</span> &nbsp;·&nbsp; Wellsburg, WV
+      </p>
 
-  <p class="hero-subtitle">
-    May 16, 2026 &nbsp;·&nbsp; <span>The Foundery Church</span> &nbsp;·&nbsp; Wellsburg, WV
-  </p>
+      <p class="hero-desc">
+        A powerful community gathering to honor the men and women who serve, protect, respond, sacrifice, and stand ready when others need help most.
+      </p>
 
-  <p class="hero-desc">
-    A powerful community gathering to honor the men and women who serve, protect, respond, sacrifice, and stand ready when others need help most.
-  </p>
+      <div class="detail-strip">
+        <div class="ds-item">
+          <span class="ds-icon">📅</span>
+          <div>
+            <span class="ds-label">Date</span>
+            <span class="ds-val">Saturday, May 16</span>
+          </div>
+        </div>
+        <div class="ds-item">
+          <span class="ds-icon">🕑</span>
+          <div>
+            <span class="ds-label">Main Event</span>
+            <span class="ds-val">2:00 PM – 4:00 PM</span>
+          </div>
+        </div>
+        <div class="ds-item">
+          <span class="ds-icon">🎶</span>
+          <div>
+            <span class="ds-label">After Party</span>
+            <span class="ds-val">4:00 PM – 6:00 PM</span>
+          </div>
+        </div>
+        <div class="ds-item">
+          <span class="ds-icon">📍</span>
+          <div>
+            <span class="ds-label">Location</span>
+            <span class="ds-val">The Foundery Church · Wellsburg, WV</span>
+          </div>
+        </div>
+      </div>
 
-  <div class="live-pill">
-    <div class="live-dot"></div>
-    Confirmed: Emergency agencies · Local vendors · Food · Family activities · Live music 4–6 PM
-  </div>
+      <div class="countdown" id="countdown">
+        <div class="cd-unit">
+          <div class="cd-num" id="days">00</div>
+          <div class="cd-label">Days</div>
+        </div>
+        <div class="cd-sep">:</div>
+        <div class="cd-unit">
+          <div class="cd-num" id="hours">00</div>
+          <div class="cd-label">Hours</div>
+        </div>
+        <div class="cd-sep">:</div>
+        <div class="cd-unit">
+          <div class="cd-num" id="minutes">00</div>
+          <div class="cd-label">Minutes</div>
+        </div>
+        <div class="cd-sep">:</div>
+        <div class="cd-unit">
+          <div class="cd-num" id="seconds">00</div>
+          <div class="cd-label">Seconds</div>
+        </div>
+      </div>
 
-  <div class="detail-strip">
-    <div class="ds-item">
-      <span class="ds-icon">📅</span>
-      <div>
-        <span class="ds-label">Date</span>
-        <span class="ds-val">Saturday, May 16</span>
+      <div class="btn-row">
+        <a href="#signup" class="btn btn-primary">Register / Sign Up →</a>
+        <a href="#sponsor" class="btn btn-gold">Become a Sponsor ★</a>
+        <a href="#confirmed" class="btn btn-ghost">See Who's Coming</a>
       </div>
     </div>
-    <div class="ds-item">
-      <span class="ds-icon">🕑</span>
-      <div>
-        <span class="ds-label">Main Event</span>
-        <span class="ds-val">2:00 PM – 4:00 PM</span>
-      </div>
-    </div>
-    <div class="ds-item">
-      <span class="ds-icon">🎶</span>
-      <div>
-        <span class="ds-label">After Party</span>
-        <span class="ds-val">4:00 PM – 6:00 PM</span>
-      </div>
-    </div>
-    <div class="ds-item">
-      <span class="ds-icon">📍</span>
-      <div>
-        <span class="ds-label">Location</span>
-        <span class="ds-val">The Foundery Church · Wellsburg, WV</span>
-      </div>
-    </div>
-  </div>
 
-  <div class="countdown" id="countdown">
-    <div class="cd-unit">
-      <div class="cd-num" id="days">00</div>
-      <div class="cd-label">Days</div>
-    </div>
-    <div class="cd-sep">:</div>
-    <div class="cd-unit">
-      <div class="cd-num" id="hours">00</div>
-      <div class="cd-label">Hours</div>
-    </div>
-    <div class="cd-sep">:</div>
-    <div class="cd-unit">
-      <div class="cd-num" id="minutes">00</div>
-      <div class="cd-label">Minutes</div>
-    </div>
-    <div class="cd-sep">:</div>
-    <div class="cd-unit">
-      <div class="cd-num" id="seconds">00</div>
-      <div class="cd-label">Seconds</div>
-    </div>
-  </div>
-
-  <div class="btn-row">
-    <a href="#signup" class="btn btn-primary">Register / Sign Up →</a>
-    <a href="#sponsor" class="btn btn-gold">Become a Sponsor ★</a>
-    <a href="#confirmed" class="btn btn-ghost">See Who's Coming</a>
-  </div>
-</div>
-
-<div class="scroll-hint">Scroll</div>
-```
-
+    <div class="scroll-hint">Scroll</div>
   </header>
 
-  <!-- SPONSOR SECTION — high-urgency, conversion-focused -->
-
+  <!-- SPONSOR SECTION -->
   <section class="sponsor-section" id="sponsor">
     <div class="sponsor-inner">
+      <div class="sponsor-left">
+        <div class="sponsor-tag">⚡ One Spot Only — Title Sponsor</div>
+        <div class="sponsor-need">We Need One</div>
+        <div class="sponsor-amount">$500</div>
+        <div class="sponsor-type">Title Sponsor</div>
 
-```
-  <div class="sponsor-left">
-    <div class="sponsor-tag">⚡ One Spot Only — Title Sponsor</div>
-    <div class="sponsor-need">We Need One</div>
-    <div class="sponsor-amount">$500</div>
-    <div class="sponsor-type">Title Sponsor</div>
+        <p class="sponsor-impact">
+          Your gift directly provides <strong>food and appreciation gifts</strong> for the first responders and veterans we're honoring at this year's event. One business. One decision. Real impact.
+        </p>
 
-    <p class="sponsor-impact">
-      Your gift directly provides <strong>food and appreciation gifts</strong> for the first responders and veterans we're honoring at this year's event. One business. One decision. Real impact.
-    </p>
+        <div class="sponsor-urgency">
+          <div class="urgency-dot"></div>
+          This is a single-slot opportunity — once it's claimed, it's gone.
+        </div>
 
-    <div class="sponsor-urgency">
-      <div class="urgency-dot"></div>
-      This is a single-slot opportunity — once it's claimed, it's gone.
+        <a href="#signup" class="btn btn-gold">Be the Business Behind the Honor →</a>
+      </div>
+
+      <div class="sponsor-right">
+        <div class="perks-title">★ What Your Sponsorship Includes</div>
+
+        <ul class="perk-list">
+          <li class="perk-item">
+            <span class="perk-icon">🌐</span>
+            <div class="perk-text">
+              <strong>Website Recognition All Year</strong>
+              <span>Listed as Primary Sponsor on the event website from now through the end of the year.</span>
+            </div>
+          </li>
+          <li class="perk-item">
+            <span class="perk-icon">🏷️</span>
+            <div class="perk-text">
+              <strong>Logo on the Event Banner</strong>
+              <span>Prominent placement on the physical banner displayed at the event for all attendees to see.</span>
+            </div>
+          </li>
+          <li class="perk-item">
+            <span class="perk-icon">📣</span>
+            <div class="perk-text">
+              <strong>Thanked Publicly During the Event</strong>
+              <span>Your business is recognized and celebrated from the stage in front of the full crowd.</span>
+            </div>
+          </li>
+          <li class="perk-item">
+            <span class="perk-icon">📲</span>
+            <div class="perk-text">
+              <strong>Featured in Event Promotions</strong>
+              <span>Included in social media posts, digital promotions, and community outreach leading up to May 16.</span>
+            </div>
+          </li>
+          <li class="perk-item">
+            <span class="perk-icon">🤝</span>
+            <div class="perk-text">
+              <strong>First Right of Refusal for Future Events</strong>
+              <span>If this becomes an annual event, you get the first call before anyone else.</span>
+            </div>
+          </li>
+          <li class="perk-item">
+            <span class="perk-icon">🙏</span>
+            <div class="perk-text">
+              <strong>Thank You Post-Event Recognition</strong>
+              <span>Dedicated thank-you acknowledgment after the event across digital channels.</span>
+            </div>
+          </li>
+        </ul>
+
+        <div class="sponsor-tagline">
+          Be the business <span>behind the honor.</span>
+        </div>
+
+        <a href="#signup" class="btn btn-primary" style="width:100%;justify-content:center;">
+          Contact Us to Sponsor →
+        </a>
+      </div>
     </div>
-
-    <a href="#signup" class="btn btn-gold">Be the Business Behind the Honor →</a>
-  </div>
-
-  <div class="sponsor-right">
-    <div class="perks-title">★ What Your Sponsorship Includes</div>
-
-    <ul class="perk-list">
-      <li class="perk-item">
-        <span class="perk-icon">🌐</span>
-        <div class="perk-text">
-          <strong>Website Recognition All Year</strong>
-          <span>Listed as Primary Sponsor on the event website from now through the end of the year.</span>
-        </div>
-      </li>
-      <li class="perk-item">
-        <span class="perk-icon">🏷️</span>
-        <div class="perk-text">
-          <strong>Logo on the Event Banner</strong>
-          <span>Prominent placement on the physical banner displayed at the event for all attendees to see.</span>
-        </div>
-      </li>
-      <li class="perk-item">
-        <span class="perk-icon">📣</span>
-        <div class="perk-text">
-          <strong>Thanked Publicly During the Event</strong>
-          <span>Your business is recognized and celebrated from the stage in front of the full crowd.</span>
-        </div>
-      </li>
-      <li class="perk-item">
-        <span class="perk-icon">📲</span>
-        <div class="perk-text">
-          <strong>Featured in Event Promotions</strong>
-          <span>Included in social media posts, digital promotions, and community outreach leading up to May 16.</span>
-        </div>
-      </li>
-      <li class="perk-item">
-        <span class="perk-icon">🤝</span>
-        <div class="perk-text">
-          <strong>First Right of Refusal for Future Events</strong>
-          <span>If this becomes an annual event, you get the first call before anyone else.</span>
-        </div>
-      </li>
-      <li class="perk-item">
-        <span class="perk-icon">🙏</span>
-        <div class="perk-text">
-          <strong>Thank You Post-Event Recognition</strong>
-          <span>Dedicated thank-you acknowledgment after the event across digital channels.</span>
-        </div>
-      </li>
-    </ul>
-
-    <div class="sponsor-tagline">
-      Be the business <span>behind the honor.</span>
-    </div>
-
-    <a href="#signup" class="btn btn-primary" style="width:100%;justify-content:center;">
-      Contact Us to Sponsor →
-    </a>
-  </div>
-
-</div>
-```
-
   </section>
 
   <!-- ABOUT -->
-
   <section class="about-section section" id="about">
     <div class="container">
       <div class="about-grid">
@@ -1395,38 +1361,34 @@
           <a href="#confirmed" class="btn btn-primary" style="margin-top:8px;">View Confirmed Lineup →</a>
         </div>
 
-```
-    <div class="feat-list">
-      <div class="feat-card">
-        <div class="feat-icon">🚒</div>
-        <div>
-          <h3>Touch-a-Truck</h3>
-          <p>Families can meet local first responders, see emergency vehicles up close, and help kids connect with real community heroes.</p>
-        </div>
-      </div>
-      <div class="feat-card">
-        <div class="feat-icon">🎖️</div>
-        <div>
-          <h3>Veteran &amp; First Responder Appreciation</h3>
-          <p>We recognize and celebrate those who have served through military, law enforcement, fire, EMS, dispatch, and public safety.</p>
-        </div>
-      </div>
-      <div class="feat-card">
-        <div class="feat-icon">🎵</div>
-        <div>
-          <h3>Food, Vendors &amp; Live Music</h3>
-          <p>Shop local vendors, enjoy community fellowship, and stay for live music from 4:00 PM to 6:00 PM.</p>
+        <div class="feat-list">
+          <div class="feat-card">
+            <div class="feat-icon">🚒</div>
+            <div>
+              <h3>Touch-a-Truck</h3>
+              <p>Families can meet local first responders, see emergency vehicles up close, and help kids connect with real community heroes.</p>
+            </div>
+          </div>
+          <div class="feat-card">
+            <div class="feat-icon">🎖️</div>
+            <div>
+              <h3>Veteran &amp; First Responder Appreciation</h3>
+              <p>We recognize and celebrate those who have served through military, law enforcement, fire, EMS, dispatch, and public safety.</p>
+            </div>
+          </div>
+          <div class="feat-card">
+            <div class="feat-icon">🎵</div>
+            <div>
+              <h3>Food, Vendors &amp; Live Music</h3>
+              <p>Shop local vendors, enjoy community fellowship, and stay for live music from 4:00 PM to 6:00 PM.</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</div>
-```
-
   </section>
 
   <!-- CONFIRMED -->
-
   <section class="confirmed-section section" id="confirmed">
     <div class="container">
       <div class="tc">
@@ -1437,79 +1399,75 @@
         </p>
       </div>
 
-```
-  <div class="lineup-grid">
-    <div class="lineup-card">
-      <div class="card-top">
-        <h3>First Responders &amp; Agencies</h3>
-        <div class="badge-confirmed">✓ Confirmed</div>
-      </div>
-      <ul class="responder-list">
-        <li><span class="check">✓</span> Brooke County EMS</li>
-        <li><span class="check">✓</span> Brooke County Sheriff's Office</li>
-        <li><span class="check">✓</span> Bethany Volunteer Fire Department</li>
-        <li><span class="check">✓</span> Colliers Volunteer Fire Department</li>
-        <li><span class="check">✓</span> McKinleyville Volunteer Fire Department</li>
-      </ul>
-      <p class="hope-note">More departments, vehicles, demonstrations, and community partners may be added as confirmations continue coming in.</p>
-    </div>
+      <div class="lineup-grid">
+        <div class="lineup-card">
+          <div class="card-top">
+            <h3>First Responders &amp; Agencies</h3>
+            <div class="badge-confirmed">✓ Confirmed</div>
+          </div>
+          <ul class="responder-list">
+            <li><span class="check">✓</span> Brooke County EMS</li>
+            <li><span class="check">✓</span> Brooke County Sheriff's Office</li>
+            <li><span class="check">✓</span> Bethany Volunteer Fire Department</li>
+            <li><span class="check">✓</span> Colliers Volunteer Fire Department</li>
+            <li><span class="check">✓</span> McKinleyville Volunteer Fire Department</li>
+          </ul>
+          <p class="hope-note">More departments, vehicles, demonstrations, and community partners may be added as confirmations continue coming in.</p>
+        </div>
 
-    <div class="lineup-card">
-      <div class="card-top">
-        <h3>Community Vendors</h3>
-        <div class="badge-confirmed">Local</div>
-      </div>
-      <div class="vendor-grid">
-        <div class="vendor-pill">
-          <strong>Tracy's Scented Delights</strong>
-          <span>Car freshies, wax melt beads, keychains &amp; more.</span>
-        </div>
-        <div class="vendor-pill">
-          <strong>Tupperware</strong>
-          <span>Kitchen accessories &amp; Tupperware products.</span>
-        </div>
-        <div class="vendor-pill">
-          <strong>Reverie Crafts</strong>
-          <span>Veteran &amp; first responder tees and keychains.</span>
-        </div>
-        <div class="vendor-pill">
-          <strong>Archie's Fidgets</strong>
-          <span>3D printed items, fidgets &amp; toys.</span>
-        </div>
-        <div class="vendor-pill">
-          <strong>Delia's Farmhouse Bakery</strong>
-          <span>Breads, cookies &amp; cinnamon rolls.</span>
-        </div>
-        <div class="vendor-pill">
-          <strong>Moments By JessieJay</strong>
-          <span>Local community vendor.</span>
-        </div>
-        <div class="vendor-pill">
-          <strong>HealthSource Wellsburg</strong>
-          <span>Community health &amp; wellness.</span>
-        </div>
-        <div class="vendor-pill">
-          <strong>Delicious Delights by Ashley</strong>
-          <span>Cakes, cake pops &amp; chocolate treats.</span>
-        </div>
-        <div class="vendor-pill">
-          <strong>Hana's Market Home</strong>
-          <span>Tumblers, candles, wax melts &amp; slime.</span>
-        </div>
-        <div class="vendor-pill">
-          <strong>Ruth's Flowers &amp; Pies</strong>
-          <span>Flowers, pies &amp; handmade goodness.</span>
+        <div class="lineup-card">
+          <div class="card-top">
+            <h3>Community Vendors</h3>
+            <div class="badge-confirmed">Local</div>
+          </div>
+          <div class="vendor-grid">
+            <div class="vendor-pill">
+              <strong>Tracy's Scented Delights</strong>
+              <span>Car freshies, wax melt beads, keychains &amp; more.</span>
+            </div>
+            <div class="vendor-pill">
+              <strong>Tupperware</strong>
+              <span>Kitchen accessories &amp; Tupperware products.</span>
+            </div>
+            <div class="vendor-pill">
+              <strong>Reverie Crafts</strong>
+              <span>Veteran &amp; first responder tees and keychains.</span>
+            </div>
+            <div class="vendor-pill">
+              <strong>Archie's Fidgets</strong>
+              <span>3D printed items, fidgets &amp; toys.</span>
+            </div>
+            <div class="vendor-pill">
+              <strong>Delia's Farmhouse Bakery</strong>
+              <span>Breads, cookies &amp; cinnamon rolls.</span>
+            </div>
+            <div class="vendor-pill">
+              <strong>Moments By JessieJay</strong>
+              <span>Local community vendor.</span>
+            </div>
+            <div class="vendor-pill">
+              <strong>HealthSource Wellsburg</strong>
+              <span>Community health &amp; wellness.</span>
+            </div>
+            <div class="vendor-pill">
+              <strong>Delicious Delights by Ashley</strong>
+              <span>Cakes, cake pops &amp; chocolate treats.</span>
+            </div>
+            <div class="vendor-pill">
+              <strong>Hana's Market Home</strong>
+              <span>Tumblers, candles, wax melts &amp; slime.</span>
+            </div>
+            <div class="vendor-pill">
+              <strong>Ruth's Flowers &amp; Pies</strong>
+              <span>Flowers, pies &amp; handmade goodness.</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</div>
-```
-
   </section>
 
   <!-- MUSIC -->
-
   <section class="music-section section" id="music">
     <div class="container">
       <div class="tc">
@@ -1520,44 +1478,40 @@
         </p>
       </div>
 
-```
-  <div class="timeline">
-    <div class="music-slot">
-      <div class="music-time">4:00–4:30</div>
-      <div class="music-info">
-        <h3>The Foundery Worship Team</h3>
-        <p>Led by Doc Roe, opening the after party with worship and community-centered music.</p>
+      <div class="timeline">
+        <div class="music-slot">
+          <div class="music-time">4:00–4:30</div>
+          <div class="music-info">
+            <h3>The Foundery Worship Team</h3>
+            <p>Led by Doc Roe, opening the after party with worship and community-centered music.</p>
+          </div>
+        </div>
+        <div class="music-slot">
+          <div class="music-time">4:30–5:00</div>
+          <div class="music-info">
+            <h3>Jim &amp; Jo-Ellen Haizlette</h3>
+            <p>With support from the kids at CCA — bringing a special community performance to the event.</p>
+          </div>
+        </div>
+        <div class="music-slot">
+          <div class="music-time">5:00–5:30</div>
+          <div class="music-info">
+            <h3>Bill Lamb</h3>
+            <p>A featured music set during the Forged to Protect after party.</p>
+          </div>
+        </div>
+        <div class="music-slot">
+          <div class="music-time">5:30–6:00</div>
+          <div class="music-info">
+            <h3>Kara &amp; Jace</h3>
+            <p>Closing out the evening with the final live music set of the night.</p>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="music-slot">
-      <div class="music-time">4:30–5:00</div>
-      <div class="music-info">
-        <h3>Jim &amp; Jo-Ellen Haizlette</h3>
-        <p>With support from the kids at CCA — bringing a special community performance to the event.</p>
-      </div>
-    </div>
-    <div class="music-slot">
-      <div class="music-time">5:00–5:30</div>
-      <div class="music-info">
-        <h3>Bill Lamb</h3>
-        <p>A featured music set during the Forged to Protect after party.</p>
-      </div>
-    </div>
-    <div class="music-slot">
-      <div class="music-time">5:30–6:00</div>
-      <div class="music-info">
-        <h3>Kara &amp; Jace</h3>
-        <p>Closing out the evening with the final live music set of the night.</p>
-      </div>
-    </div>
-  </div>
-</div>
-```
-
   </section>
 
   <!-- WHO -->
-
   <section class="who-section section" id="who">
     <div class="container">
       <div class="tc">
@@ -1565,46 +1519,42 @@
         <h2 class="section-h">Who We're Inviting</h2>
       </div>
 
-```
-  <div class="who-grid">
-    <div class="who-card">
-      <div class="who-num">01</div>
-      <h3>Families &amp; Kids</h3>
-      <p>Bring the whole family. Meet local heroes, see the vehicles, enjoy the atmosphere, and show your kids what gratitude looks like in action.</p>
+      <div class="who-grid">
+        <div class="who-card">
+          <div class="who-num">01</div>
+          <h3>Families &amp; Kids</h3>
+          <p>Bring the whole family. Meet local heroes, see the vehicles, enjoy the atmosphere, and show your kids what gratitude looks like in action.</p>
+        </div>
+        <div class="who-card">
+          <div class="who-num">02</div>
+          <h3>First Responders</h3>
+          <p>Come be honored. Bring your vehicle, run a demo, and let your community see the heart behind the badge, helmet, and uniform.</p>
+        </div>
+        <div class="who-card">
+          <div class="who-num">03</div>
+          <h3>Local Businesses</h3>
+          <p>Support a meaningful local event. Sponsor appreciation efforts, donate food or supplies, or set up as a community partner.</p>
+        </div>
+        <div class="who-card">
+          <div class="who-num">04</div>
+          <h3>Veteran Organizations</h3>
+          <p>Connect, be recognized, and share resources. We want every veteran to feel seen and celebrated.</p>
+        </div>
+        <div class="who-card">
+          <div class="who-num">05</div>
+          <h3>Food Vendors</h3>
+          <p>Set up your booth and serve our community. Vendor spots are limited — sign up early to reserve your space.</p>
+        </div>
+        <div class="who-card">
+          <div class="who-num">06</div>
+          <h3>Volunteers &amp; Donors</h3>
+          <p>Donate supplies, help with setup, or give your time. It all matters and we need you.</p>
+        </div>
+      </div>
     </div>
-    <div class="who-card">
-      <div class="who-num">02</div>
-      <h3>First Responders</h3>
-      <p>Come be honored. Bring your vehicle, run a demo, and let your community see the heart behind the badge, helmet, and uniform.</p>
-    </div>
-    <div class="who-card">
-      <div class="who-num">03</div>
-      <h3>Local Businesses</h3>
-      <p>Support a meaningful local event. Sponsor appreciation efforts, donate food or supplies, or set up as a community partner.</p>
-    </div>
-    <div class="who-card">
-      <div class="who-num">04</div>
-      <h3>Veteran Organizations</h3>
-      <p>Connect, be recognized, and share resources. We want every veteran to feel seen and celebrated.</p>
-    </div>
-    <div class="who-card">
-      <div class="who-num">05</div>
-      <h3>Food Vendors</h3>
-      <p>Set up your booth and serve our community. Vendor spots are limited — sign up early to reserve your space.</p>
-    </div>
-    <div class="who-card">
-      <div class="who-num">06</div>
-      <h3>Volunteers &amp; Donors</h3>
-      <p>Donate supplies, help with setup, or give your time. It all matters and we need you.</p>
-    </div>
-  </div>
-</div>
-```
-
   </section>
 
   <!-- CALLOUT BANNER -->
-
   <section class="callout-section">
     <div class="callout-inner">
       <div>
@@ -1616,7 +1566,6 @@
   </section>
 
   <!-- SIGNUP FORM -->
-
   <section class="signup-section section" id="signup">
     <div class="container">
       <div class="tc" style="margin-bottom:56px;">
@@ -1627,68 +1576,66 @@
         </p>
       </div>
 
-```
-  <div class="form-shell">
-    <form action="https://formsubmit.co/founderyworks@gmail.com" method="POST">
-      <input type="hidden" name="_subject" value="New Forged to Protect Participation Form">
-      <input type="hidden" name="_template" value="table">
-      <input type="hidden" name="_captcha" value="false">
-      <input type="hidden" name="_next" value="https://forgedtoprotect.com/#signup">
-
-      <div class="form-grid">
-        <div class="field">
-          <label for="name">Contact Name</label>
-          <input type="text" id="name" name="Contact Name" autocomplete="name" placeholder="Your full name" required />
-        </div>
-        <div class="field">
-          <label for="organization">Organization / Department</label>
-          <input type="text" id="organization" name="Organization / Department" autocomplete="organization" placeholder="Fire Dept., EMS, Business, etc." required />
-        </div>
-        <div class="field">
-          <label for="email">Email Address</label>
-          <input type="email" id="email" name="Email Address" autocomplete="email" placeholder="you@example.com" required />
-        </div>
-        <div class="field">
-          <label for="phone">Phone Number</label>
-          <input type="tel" id="phone" name="Phone Number" autocomplete="tel" placeholder="Best number to reach you" />
-        </div>
-        <div class="field form-full">
-          <label for="type">How Would You Like to Participate?</label>
-          <select id="type" name="Participation Type" required>
-            <option value="">Select one…</option>
-            <option value="Title Sponsor ($500)">🌟 Title Sponsor ($500)</option>
-            <option value="First Responder Department">First Responder Department</option>
-            <option value="Veteran Organization">Veteran Organization</option>
-            <option value="Emergency Vehicle / Touch-a-Truck">Emergency Vehicle / Touch-a-Truck</option>
-            <option value="Food Vendor">Food Vendor</option>
-            <option value="Community Vendor">Community Vendor</option>
-            <option value="Business Sponsor">Business Sponsor</option>
-            <option value="Donation / Food Support">Donation / Food Support</option>
-            <option value="Volunteer">Volunteer</option>
-            <option value="Other">Other</option>
-          </select>
-        </div>
-        <div class="field form-full">
-          <label for="details">What Will You Bring, Offer, or Donate?</label>
-          <textarea id="details" name="What They Will Bring / Offer / Donate" placeholder="Fire truck, ambulance, K-9 demo, food booth, drinks, giveaway, veteran resource table, $500 title sponsorship, etc." required></textarea>
-        </div>
-        <div class="field form-full">
-          <label for="needs">Do You Need Anything From Us?</label>
-          <textarea id="needs" name="Needs From Us" placeholder="Table, outlet, parking space, setup time, sponsor details, special instructions…"></textarea>
-        </div>
-        <div class="form-full">
-          <button type="submit" class="submit-btn">Submit Participation Form →</button>
-        </div>
+      <div class="form-shell" id="form-container">
+        <form id="participation-form" action="https://formsubmit.co/founderyworks@gmail.com" method="POST">
+          <input type="hidden" name="_subject" value="New Forged to Protect Participation Form">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_captcha" value="false">
+          <!-- Triggers an automated email to the submitter using the "email" field below -->
+          <input type="hidden" name="_autoresponse" value="Thank you for signing up for Forged to Protect! We have received your submission details and will be in touch with you shortly. If you have immediate questions, please contact us at founderyworks@gmail.com.">
+          
+          <div class="form-grid">
+            <div class="field">
+              <label for="name">Contact Name</label>
+              <input type="text" id="name" name="Contact Name" autocomplete="name" placeholder="Your full name" required />
+            </div>
+            <div class="field">
+              <label for="organization">Organization / Department</label>
+              <input type="text" id="organization" name="Organization / Department" autocomplete="organization" placeholder="Fire Dept., EMS, Business, etc." required />
+            </div>
+            <div class="field">
+              <label for="email">Email Address</label>
+              <!-- Name changed to "email" so FormSubmit.co knows where to send the _autoresponse -->
+              <input type="email" id="email" name="email" autocomplete="email" placeholder="you@example.com" required />
+            </div>
+            <div class="field">
+              <label for="phone">Phone Number</label>
+              <input type="tel" id="phone" name="Phone Number" autocomplete="tel" placeholder="Best number to reach you" />
+            </div>
+            <div class="field form-full">
+              <label for="type">How Would You Like to Participate?</label>
+              <select id="type" name="Participation Type" required>
+                <option value="">Select one…</option>
+                <option value="Title Sponsor ($500)">🌟 Title Sponsor ($500)</option>
+                <option value="First Responder Department">First Responder Department</option>
+                <option value="Veteran Organization">Veteran Organization</option>
+                <option value="Emergency Vehicle / Touch-a-Truck">Emergency Vehicle / Touch-a-Truck</option>
+                <option value="Food Vendor">Food Vendor</option>
+                <option value="Community Vendor">Community Vendor</option>
+                <option value="Business Sponsor">Business Sponsor</option>
+                <option value="Donation / Food Support">Donation / Food Support</option>
+                <option value="Volunteer">Volunteer</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+            <div class="field form-full">
+              <label for="details">What Will You Bring, Offer, or Donate?</label>
+              <textarea id="details" name="What They Will Bring / Offer / Donate" placeholder="Fire truck, ambulance, K-9 demo, food booth, drinks, giveaway, veteran resource table, $500 title sponsorship, etc." required></textarea>
+            </div>
+            <div class="field form-full">
+              <label for="needs">Do You Need Anything From Us?</label>
+              <textarea id="needs" name="Needs From Us" placeholder="Table, outlet, parking space, setup time, sponsor details, special instructions…"></textarea>
+            </div>
+            <div class="form-full">
+              <button type="submit" class="submit-btn">Submit Participation Form →</button>
+            </div>
+          </div>
+        </form>
       </div>
-    </form>
-  </div>
-</div>
-```
-
+    </div>
   </section>
 
   <!-- FOOTER -->
-
   <footer>
     <div class="footer-logo">Forged to <span>Protect</span></div>
     <div class="footer-divider"></div>
@@ -1699,18 +1646,16 @@
       <a href="mailto:founderyworks@gmail.com">founderyworks@gmail.com</a>
     </p>
 
-```
-<div class="star-divider" style="margin-top:32px;max-width:400px;margin-left:auto;margin-right:auto;">
-  STRONGER TOGETHER · FOREVER GRATEFUL
-</div>
+    <div class="star-divider" style="margin-top:32px;max-width:400px;margin-left:auto;margin-right:auto;">
+      STRONGER TOGETHER · FOREVER GRATEFUL
+    </div>
 
-<p class="footer-copy">© 2026 Forged to Protect · The Foundery Church · All Rights Reserved</p>
-```
-
+    <p class="footer-copy">© 2026 Forged to Protect · The Foundery Church · All Rights Reserved</p>
   </footer>
 
   <script>
     document.addEventListener("DOMContentLoaded", () => {
+      // Countdown Timer
       const eventDate = new Date("May 16, 2026 14:00:00 GMT-0400").getTime();
 
       const tick = setInterval(() => {
@@ -1731,8 +1676,56 @@
         document.getElementById('minutes').textContent = pad(Math.floor((dist % 3600000) / 60000));
         document.getElementById('seconds').textContent = pad(Math.floor((dist % 60000) / 1000));
       }, 1000);
+
+      // AJAX Form Submission & UI Success Message
+      const form = document.getElementById('participation-form');
+      const formContainer = document.getElementById('form-container');
+
+      if (form) {
+        form.addEventListener('submit', function(e) {
+          e.preventDefault(); // Prevent standard page reload
+
+          const submitBtn = form.querySelector('.submit-btn');
+          const originalBtnText = submitBtn.textContent;
+          submitBtn.textContent = 'Sending...';
+          submitBtn.disabled = true;
+
+          const formData = new FormData(form);
+
+          fetch(form.action, {
+            method: 'POST',
+            body: formData,
+            headers: { 'Accept': 'application/json' }
+          })
+          .then(response => {
+             if (response.ok) {
+                // Replace the form with a seamless Thank You message
+                formContainer.innerHTML = `
+                   <div style="text-align:center; padding: 60px 20px;">
+                      <h3 style="color: var(--green); font-size: 3rem; margin-bottom: 16px; font-family: 'Bebas Neue', sans-serif; letter-spacing: 2px;">Submission Received!</h3>
+                      <p style="font-size: 1.1rem; line-height: 1.6; color: rgba(255,255,255,0.85);">
+                        Thank you for stepping up to participate in Forged to Protect.<br>
+                        We have sent a confirmation email to the address you provided and will be in touch shortly.
+                      </p>
+                   </div>
+                `;
+             } else {
+                submitBtn.textContent = originalBtnText;
+                submitBtn.disabled = false;
+                alert("Oops! There was a problem submitting your form. Please try again.");
+             }
+          })
+          .catch(error => {
+             submitBtn.textContent = originalBtnText;
+             submitBtn.disabled = false;
+             alert("Oops! There was a problem submitting your form. Please try again.");
+          });
+        });
+      }
     });
   </script>
 
 </body>
 </html>
+
+```
