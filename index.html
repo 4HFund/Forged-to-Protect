@@ -1,802 +1,864 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
-  <title>Forged to Protect | Community First Responder Event</title>
-  
+  <title>Forged to Protect | May 16 · Wellsburg, WV</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;900&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
-  
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;0,800;0,900;1,900&family=Barlow:wght@400;500;600;700&family=Bebas+Neue&display=swap" rel="stylesheet">
+
   <style>
     :root {
-      --navy:   #080e1a;
-      --steel:  #131d2e;
-      --steel2: #0f1826;
-      --orange: #f97316;
-      --gold:   #f59e0b;
-      --red:    #9b1c1c;
-      --cream:  #fdf6ec;
-      --muted:  #8899b0;
-      --white:  #ffffff;
-      --green:  #22c55e;
+      --navy:    #06091a;
+      --deep:    #0b1025;
+      --steel:   #111827;
+      --panel:   #0d1420;
+      --orange:  #f97316;
+      --amber:   #f59e0b;
+      --crimson: #991b1b;
+      --blood:   #7f1d1d;
+      --cream:   #fdf6ec;
+      --muted:   #7a8ba8;
+      --white:   #ffffff;
+      --green:   #22c55e;
+      --gold:    #d4a017;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'Barlow', system-ui, -apple-system, sans-serif;
+      font-family: 'Barlow', system-ui, sans-serif;
       background: var(--navy);
       color: var(--white);
       overflow-x: hidden;
-      width: 100%;
     }
 
-    body::before {
+    /* ─── NOISE OVERLAY ─── */
+    body::after {
       content: '';
       position: fixed;
       inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
       pointer-events: none;
       z-index: 9999;
-      opacity: 0.5;
+      opacity: 0.4;
     }
 
-    .text-center { text-align: center; }
-    .mb-4 { margin-bottom: 16px; }
-    .mb-8 { margin-bottom: 32px; }
-    .mb-12 { margin-bottom: 48px; }
-    .mt-3 { margin-top: 12px; }
-    .mt-4 { margin-top: 16px; }
-    .text-navy { color: var(--navy); }
-    .inline-flex { display: inline-flex; }
-
+    /* ─── NAV ─── */
     nav {
       position: fixed;
       top: 0; left: 0; right: 0;
-      z-index: 100;
+      z-index: 200;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 18px 40px;
-      background: rgba(8,14,26,0.78);
-      backdrop-filter: blur(18px);
-      border-bottom: 1px solid rgba(255,255,255,0.06);
+      padding: 16px 40px;
+      background: rgba(6,9,26,0.88);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(249,115,22,0.15);
     }
 
     .nav-logo {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-weight: 900;
-      font-size: 1.3rem;
-      text-transform: uppercase;
-      letter-spacing: 2px;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.4rem;
+      letter-spacing: 3px;
       color: var(--white);
     }
-
     .nav-logo span { color: var(--orange); }
 
     .nav-links {
       display: flex;
-      gap: 28px;
+      gap: 32px;
       list-style: none;
       align-items: center;
     }
-
     .nav-links a {
       color: var(--muted);
       text-decoration: none;
-      font-size: 0.82rem;
+      font-size: 0.78rem;
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 1.4px;
+      letter-spacing: 1.8px;
       transition: color 0.2s;
     }
-
     .nav-links a:hover { color: var(--white); }
 
     .nav-cta {
-      background: var(--orange);
+      background: var(--orange) !important;
       color: var(--white) !important;
-      padding: 10px 22px;
-      border-radius: 999px;
-      font-size: 0.78rem !important;
+      padding: 9px 22px;
+      border-radius: 4px;
+      font-size: 0.75rem !important;
       font-weight: 800 !important;
-      transition: background 0.2s, transform 0.2s !important;
+      letter-spacing: 2px !important;
+      text-transform: uppercase;
+      transition: background 0.2s !important;
     }
+    .nav-cta:hover { background: #ea580c !important; }
 
-    .nav-cta:hover {
-      background: #ea580c !important;
-      transform: translateY(-1px);
-    }
-
+    /* ─── HERO ─── */
     .hero {
       min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding: 140px 24px 80px;
+      padding: 140px 24px 100px;
       position: relative;
       overflow: hidden;
     }
 
-    .orb {
+    .hero-bg {
       position: absolute;
-      border-radius: 50%;
-      filter: blur(90px);
-      opacity: 0.35;
-      animation: drift 12s ease-in-out infinite alternate;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 0%, rgba(153,27,27,0.45) 0%, transparent 70%),
+        radial-gradient(ellipse 60% 50% at 20% 80%, rgba(249,115,22,0.18) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 40% at 80% 70%, rgba(245,158,11,0.12) 0%, transparent 50%),
+        linear-gradient(180deg, #06091a 0%, #0d1120 100%);
     }
 
-    .orb-1 {
-      width: 600px;
-      height: 600px;
-      background: var(--orange);
-      top: -200px;
-      left: -150px;
-      animation-delay: 0s;
-    }
-
-    .orb-2 {
-      width: 500px;
-      height: 500px;
-      background: var(--red);
-      bottom: -180px;
-      right: -100px;
-      animation-delay: -4s;
-    }
-
-    .orb-3 {
-      width: 350px;
-      height: 350px;
-      background: var(--gold);
-      top: 40%;
-      left: 55%;
-      animation-delay: -8s;
-      opacity: 0.2;
-    }
-
-    @keyframes drift {
-      from { transform: translate(0, 0) scale(1); }
-      to   { transform: translate(30px, 20px) scale(1.08); }
-    }
-
-    .hero::after {
+    /* diagonal stripes */
+    .hero-bg::after {
       content: '';
       position: absolute;
       inset: 0;
       background: repeating-linear-gradient(
-        -55deg,
+        -60deg,
         transparent,
-        transparent 60px,
-        rgba(255,255,255,0.012) 60px,
-        rgba(255,255,255,0.012) 61px
+        transparent 80px,
+        rgba(255,255,255,0.008) 80px,
+        rgba(255,255,255,0.008) 81px
       );
+    }
+
+    /* animated light sweep */
+    .hero-sweep {
+      position: absolute;
+      top: -30%;
+      left: -20%;
+      width: 60%;
+      height: 160%;
+      background: linear-gradient(105deg, transparent 40%, rgba(249,115,22,0.06) 50%, transparent 60%);
+      animation: sweep 8s ease-in-out infinite alternate;
       pointer-events: none;
+    }
+
+    @keyframes sweep {
+      from { transform: translateX(-10%) rotate(-5deg); }
+      to   { transform: translateX(60%) rotate(-5deg); }
     }
 
     .hero-content {
       position: relative;
       z-index: 2;
-      max-width: 1050px;
+      max-width: 1100px;
       width: 100%;
     }
 
-    .pill {
+    /* event badge */
+    .event-badge {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      background: rgba(249,115,22,0.12);
-      border: 1px solid rgba(249,115,22,0.4);
-      color: var(--gold);
-      padding: 8px 20px;
-      border-radius: 999px;
-      font-size: 0.75rem;
+      gap: 10px;
+      background: rgba(249,115,22,0.1);
+      border: 1px solid rgba(249,115,22,0.5);
+      color: var(--amber);
+      padding: 7px 20px;
+      border-radius: 2px;
+      font-size: 0.7rem;
       font-weight: 800;
       text-transform: uppercase;
-      letter-spacing: 2px;
-      margin-bottom: 32px;
-      max-width: 100%;
-      text-align: center;
-      line-height: 1.4;
+      letter-spacing: 3px;
+      margin-bottom: 30px;
     }
-
-    .pill::before {
+    .event-badge::before, .event-badge::after {
       content: '★';
-      font-size: 0.7rem;
+      font-size: 0.6rem;
+      opacity: 0.7;
     }
 
-    h1 {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: clamp(3.5rem, 12vw, 9rem);
-      font-weight: 900;
-      line-height: 0.88;
-      text-transform: uppercase;
-      letter-spacing: -2px;
-      margin-bottom: 28px;
-      word-wrap: break-word;
+    /* main title */
+    .hero-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(5rem, 18vw, 14rem);
+      line-height: 0.85;
+      letter-spacing: 4px;
+      margin-bottom: 16px;
     }
 
-    h1 em {
-      font-style: normal;
+    .hero-title .line1 { color: var(--white); }
+
+    .hero-title .line2 {
       display: block;
-      -webkit-text-stroke: 2px var(--orange);
       color: transparent;
+      -webkit-text-stroke: 2px var(--orange);
+      text-shadow: 0 0 80px rgba(249,115,22,0.4);
     }
 
-    .hero-sub {
-      font-size: clamp(1rem, 2vw, 1.2rem);
-      color: rgba(255,255,255,0.82);
-      max-width: 720px;
-      margin: 0 auto 38px;
-      line-height: 1.8;
-      font-weight: 400;
-      padding: 0 10px;
+    .hero-subtitle {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(1rem, 3vw, 1.5rem);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      color: var(--muted);
+      margin-bottom: 36px;
+    }
+    .hero-subtitle span { color: var(--amber); }
+
+    .hero-desc {
+      font-size: clamp(1rem, 1.8vw, 1.15rem);
+      color: rgba(255,255,255,0.75);
+      max-width: 680px;
+      margin: 0 auto 36px;
+      line-height: 1.85;
     }
 
-    .hero-alert {
+    /* live indicator */
+    .live-pill {
       display: inline-flex;
       align-items: center;
-      justify-content: center;
       gap: 10px;
-      background: rgba(34,197,94,0.1);
-      border: 1px solid rgba(34,197,94,0.35);
-      color: #bbf7d0;
-      padding: 12px 22px;
-      border-radius: 999px;
-      font-size: 0.85rem;
+      background: rgba(34,197,94,0.08);
+      border: 1px solid rgba(34,197,94,0.3);
+      color: #86efac;
+      padding: 10px 22px;
+      border-radius: 2px;
+      font-size: 0.82rem;
       font-weight: 700;
       margin-bottom: 40px;
-      line-height: 1.4;
+    }
+    .live-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--green);
+      border-radius: 50%;
+      animation: pulse 1.4s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.7); }
     }
 
-    .hero-alert span {
-      color: var(--green);
-      font-size: 1rem;
-    }
-
+    /* detail strip */
     .detail-strip {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 2px;
+      gap: 0;
       margin-bottom: 44px;
     }
-
     .ds-item {
       display: flex;
       align-items: center;
-      gap: 10px;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.08);
-      padding: 14px 24px;
-      font-size: 0.95rem;
-      text-align: left;
+      gap: 12px;
+      padding: 16px 28px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.07);
+      margin: 2px;
     }
-
-    .ds-item:first-child { border-radius: 999px 0 0 999px; }
-    .ds-item:last-child  { border-radius: 0 999px 999px 0; }
-
-    .ds-icon { color: var(--orange); font-size: 1.1rem; }
-
+    .ds-icon { font-size: 1.2rem; }
     .ds-label {
-      color: var(--muted);
-      font-size: 0.7rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 1px;
       display: block;
-    }
-
-    .ds-val {
-      font-weight: 700;
-      font-size: 0.95rem;
-    }
-
-    .countdown {
-      display: flex;
-      justify-content: center;
-      gap: 16px;
-      margin-bottom: 48px;
-    }
-
-    .cd-box {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      min-width: 80px;
-    }
-
-    .cd-num {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: clamp(2.5rem, 6vw, 4.5rem);
-      font-weight: 900;
-      line-height: 1;
-      color: var(--white);
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 14px;
-      width: 90px;
-      height: 90px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .cd-num::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, rgba(255,255,255,0.06) 0%, transparent 50%);
-    }
-
-    .cd-label {
-      margin-top: 8px;
-      font-size: 0.65rem;
+      font-size: 0.62rem;
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 2px;
-      color: var(--muted);
-    }
-
-    .cd-sep {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 3rem;
-      font-weight: 900;
       color: var(--orange);
-      line-height: 1;
-      margin-top: 4px;
-      opacity: 0.6;
+      margin-bottom: 2px;
+    }
+    .ds-val {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
     }
 
-    .btn-group {
+    /* countdown */
+    .countdown {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 48px;
+    }
+    .cd-unit {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .cd-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.8rem, 7vw, 5.5rem);
+      letter-spacing: 2px;
+      line-height: 1;
+      color: var(--white);
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-top: 2px solid var(--orange);
+      width: 100px;
+      height: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .cd-label {
+      font-size: 0.6rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: var(--muted);
+      margin-top: 8px;
+    }
+    .cd-sep {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 3.5rem;
+      color: var(--orange);
+      opacity: 0.5;
+      margin-top: -18px;
+      padding: 0 4px;
+    }
+
+    /* buttons */
+    .btn-row {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       gap: 14px;
     }
-
     .btn {
       display: inline-flex;
       align-items: center;
-      justify-content: center;
       gap: 8px;
-      padding: 16px 32px;
-      border-radius: 999px;
-      font-weight: 800;
-      font-size: 0.95rem;
+      padding: 16px 36px;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
       text-decoration: none;
+      border-radius: 2px;
       transition: all 0.25s;
-      letter-spacing: 0.5px;
-      text-align: center;
     }
-
     .btn-primary {
       background: var(--orange);
       color: white;
-      box-shadow: 0 0 0 0 rgba(249,115,22,0.4);
+      box-shadow: 0 0 40px rgba(249,115,22,0.35);
     }
-
     .btn-primary:hover {
       background: #ea580c;
       transform: translateY(-3px);
-      box-shadow: 0 16px 40px rgba(249,115,22,0.4);
+      box-shadow: 0 20px 50px rgba(249,115,22,0.5);
     }
-
     .btn-ghost {
-      border: 1px solid rgba(255,255,255,0.2);
+      border: 1px solid rgba(255,255,255,0.25);
       color: white;
     }
-
     .btn-ghost:hover {
-      background: rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.06);
       transform: translateY(-3px);
     }
+    .btn-gold {
+      background: linear-gradient(135deg, var(--amber), var(--gold));
+      color: #111;
+      font-weight: 800;
+      box-shadow: 0 0 40px rgba(212,160,23,0.4);
+    }
+    .btn-gold:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 20px 50px rgba(212,160,23,0.5);
+    }
 
+    /* scroll hint */
     .scroll-hint {
       position: absolute;
-      bottom: 24px;
+      bottom: 28px;
       left: 50%;
       transform: translateX(-50%);
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
       color: var(--muted);
-      font-size: 0.7rem;
+      font-size: 0.65rem;
       font-weight: 800;
       text-transform: uppercase;
-      letter-spacing: 2px;
-      animation: bob 2s ease-in-out infinite;
+      letter-spacing: 3px;
+      animation: bob 2.5s ease-in-out infinite;
       z-index: 2;
     }
-
     .scroll-hint::after {
       content: '';
-      display: block;
       width: 1px;
       height: 40px;
       background: linear-gradient(to bottom, var(--muted), transparent);
     }
-
     @keyframes bob {
-      0%,100% { transform: translateX(-50%) translateY(0); }
-      50% { transform: translateX(-50%) translateY(6px); }
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(8px); }
     }
 
-    .section {
-      padding: 100px 24px;
-    }
-
-    .container {
-      max-width: 1140px;
-      margin: 0 auto;
-      width: 100%;
-    }
+    /* ─── SHARED SECTION STYLES ─── */
+    .section { padding: 100px 24px; }
+    .container { max-width: 1160px; margin: 0 auto; width: 100%; }
 
     .eyebrow {
       display: inline-flex;
       align-items: center;
-      gap: 10px;
-      font-size: 0.72rem;
+      gap: 14px;
+      font-size: 0.68rem;
       font-weight: 800;
       text-transform: uppercase;
-      letter-spacing: 3px;
+      letter-spacing: 4px;
       color: var(--orange);
-      margin-bottom: 18px;
+      margin-bottom: 20px;
     }
-
-    .eyebrow::before,
-    .eyebrow::after {
+    .eyebrow::before, .eyebrow::after {
       content: '';
-      display: block;
-      width: 30px;
+      width: 36px;
       height: 1px;
       background: var(--orange);
     }
 
-    .section-h { 
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: clamp(2.2rem, 6vw, 4rem);
-      font-weight: 900;
-      text-transform: uppercase;
-      line-height: 0.95;
-      letter-spacing: -1px;
-      word-wrap: break-word;
+    .section-h {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.8rem, 7vw, 5.5rem);
+      letter-spacing: 2px;
+      line-height: 0.9;
     }
-
     .section-sub {
-      color: var(--muted);
-      max-width: 720px;
+      max-width: 700px;
       margin: 18px auto 0;
-      line-height: 1.75;
+      color: var(--muted);
+      line-height: 1.8;
       font-size: 1rem;
     }
+    .tc { text-align: center; }
 
+    /* ─── SPONSOR SECTION (HERO-LEVEL URGENCY) ─── */
+    .sponsor-section {
+      background: var(--deep);
+      border-top: 3px solid var(--orange);
+      position: relative;
+      overflow: hidden;
+      padding: 0;
+    }
+
+    .sponsor-section::before {
+      content: 'SPONSOR';
+      position: absolute;
+      right: -60px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 22rem;
+      color: rgba(249,115,22,0.04);
+      pointer-events: none;
+      line-height: 1;
+      letter-spacing: 10px;
+    }
+
+    .sponsor-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 700px;
+    }
+
+    .sponsor-left {
+      background: linear-gradient(135deg, #7f1d1d 0%, #c2410c 40%, #92400e 100%);
+      padding: 80px 60px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .sponsor-left::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        45deg, transparent, transparent 50px,
+        rgba(0,0,0,0.08) 50px, rgba(0,0,0,0.08) 51px
+      );
+    }
+
+    .sponsor-left::after {
+      content: '';
+      position: absolute;
+      bottom: -80px;
+      right: -80px;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.04);
+    }
+
+    .sponsor-left > * { position: relative; z-index: 1; }
+
+    .sponsor-tag {
+      display: inline-block;
+      background: rgba(0,0,0,0.3);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: rgba(255,255,255,0.9);
+      padding: 6px 16px;
+      font-size: 0.68rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      margin-bottom: 24px;
+    }
+
+    .sponsor-need {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.5rem, 5vw, 4.2rem);
+      letter-spacing: 2px;
+      line-height: 0.9;
+      color: white;
+      margin-bottom: 10px;
+    }
+
+    .sponsor-amount {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(5rem, 12vw, 9rem);
+      letter-spacing: -2px;
+      line-height: 0.85;
+      color: var(--amber);
+      text-shadow: 0 0 60px rgba(245,158,11,0.5);
+      margin-bottom: 4px;
+    }
+
+    .sponsor-type {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      color: rgba(255,255,255,0.9);
+      margin-bottom: 28px;
+    }
+
+    .sponsor-impact {
+      font-size: 1.05rem;
+      line-height: 1.75;
+      color: rgba(255,255,255,0.85);
+      margin-bottom: 36px;
+      max-width: 420px;
+    }
+    .sponsor-impact strong { color: var(--amber); }
+
+    .sponsor-urgency {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: rgba(0,0,0,0.3);
+      border-left: 3px solid var(--amber);
+      padding: 14px 18px;
+      margin-bottom: 32px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: rgba(255,255,255,0.9);
+    }
+    .urgency-dot {
+      width: 10px;
+      height: 10px;
+      background: var(--amber);
+      border-radius: 50%;
+      flex-shrink: 0;
+      animation: pulse 1.2s ease-in-out infinite;
+    }
+
+    .sponsor-right {
+      padding: 80px 60px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background: rgba(255,255,255,0.02);
+    }
+
+    .perks-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      color: var(--orange);
+      margin-bottom: 24px;
+    }
+
+    .perk-list {
+      list-style: none;
+      display: grid;
+      gap: 12px;
+      margin-bottom: 40px;
+    }
+
+    .perk-item {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      padding: 18px 20px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-left: 3px solid var(--orange);
+      transition: background 0.2s;
+    }
+    .perk-item:hover { background: rgba(249,115,22,0.06); }
+
+    .perk-icon {
+      font-size: 1.3rem;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .perk-text strong {
+      display: block;
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .perk-text span {
+      font-size: 0.84rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .sponsor-tagline {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.6rem;
+      font-style: italic;
+      font-weight: 700;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 24px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+    .sponsor-tagline span { color: var(--orange); }
+
+    /* ─── ABOUT ─── */
     .about-section {
       background: var(--cream);
       color: var(--navy);
       position: relative;
       overflow: hidden;
     }
-
     .about-section::before {
       content: 'HONOR';
       position: absolute;
-      right: -40px;
+      right: -60px;
       top: 50%;
       transform: translateY(-50%);
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 18rem;
-      font-weight: 900;
-      color: rgba(8,14,26,0.04);
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 20rem;
+      color: rgba(8,14,26,0.035);
       pointer-events: none;
       line-height: 1;
-      user-select: none;
     }
 
     .about-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 60px;
+      gap: 70px;
       align-items: center;
     }
 
+    .about-text .section-h { color: var(--navy); }
+    .about-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 0.68rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      color: var(--crimson);
+      margin-bottom: 20px;
+    }
+    .about-eyebrow::before, .about-eyebrow::after {
+      content: '';
+      width: 36px;
+      height: 1px;
+      background: var(--crimson);
+    }
+
     .about-text p {
-      font-size: 1.1rem;
-      line-height: 1.85;
+      font-size: 1.08rem;
+      line-height: 1.9;
       color: #374151;
       margin-bottom: 20px;
     }
 
-    .about-features {
-      display: grid;
-      gap: 20px;
-    }
+    .feat-list { display: grid; gap: 18px; }
 
     .feat-card {
       display: flex;
-      gap: 18px;
+      gap: 20px;
       align-items: flex-start;
       background: white;
-      border-radius: 18px;
-      padding: 22px;
-      box-shadow: 0 4px 30px rgba(8,14,26,0.08);
-      border-left: 4px solid var(--orange);
+      padding: 24px;
+      border-top: 3px solid var(--orange);
+      box-shadow: 0 8px 40px rgba(8,14,26,0.07);
       transition: transform 0.2s, box-shadow 0.2s;
     }
-
     .feat-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 12px 40px rgba(8,14,26,0.14);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 50px rgba(8,14,26,0.12);
     }
-
     .feat-icon {
-      width: 48px;
-      height: 48px;
-      background: linear-gradient(135deg, var(--orange), var(--gold));
-      border-radius: 12px;
+      width: 52px; height: 52px;
+      background: linear-gradient(135deg, var(--orange), var(--amber));
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.4rem;
+      font-size: 1.5rem;
       flex-shrink: 0;
     }
-
     .feat-card h3 {
-      font-size: 1.05rem;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.2rem;
       font-weight: 800;
-      margin-bottom: 4px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 6px;
       color: var(--navy);
     }
+    .feat-card p { font-size: 0.9rem; color: #6b7280; line-height: 1.65; }
 
-    .feat-card p {
-      font-size: 0.9rem;
-      color: #6b7280;
-      line-height: 1.6;
-    }
-
+    /* ─── CONFIRMED ─── */
     .confirmed-section {
-      background:
-        radial-gradient(circle at top left, rgba(249,115,22,0.14), transparent 34%),
-        radial-gradient(circle at bottom right, rgba(245,158,11,0.12), transparent 35%),
-        var(--steel);
+      background: var(--steel);
       position: relative;
       overflow: hidden;
     }
-
     .confirmed-section::before {
       content: 'CONFIRMED';
       position: absolute;
       top: 40px;
       left: 50%;
       transform: translateX(-50%);
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: clamp(5rem, 17vw, 15rem);
-      font-weight: 900;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(4rem, 14vw, 12rem);
       color: rgba(255,255,255,0.025);
-      letter-spacing: 4px;
+      letter-spacing: 8px;
       pointer-events: none;
-      line-height: 1;
       white-space: nowrap;
     }
 
     .lineup-grid {
-      margin-top: 58px;
+      margin-top: 60px;
       display: grid;
       grid-template-columns: 1.1fr 1fr;
-      gap: 22px;
-      align-items: stretch;
+      gap: 24px;
     }
 
     .lineup-card {
-      background: rgba(255,255,255,0.045);
-      border: 1px solid rgba(255,255,255,0.09);
-      border-radius: 28px;
-      padding: 30px;
-      box-shadow: 0 35px 80px rgba(0,0,0,0.25);
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-top: 3px solid var(--orange);
+      padding: 36px;
       position: relative;
       overflow: hidden;
     }
 
-    .lineup-card::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, rgba(249,115,22,0.12), transparent 45%);
-      pointer-events: none;
-    }
-
-    .lineup-card > * {
-      position: relative;
-      z-index: 1;
-    }
-
-    .lineup-top {
+    .card-top {
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 16px;
-      margin-bottom: 22px;
-      padding-bottom: 18px;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
+      margin-bottom: 28px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
     }
-
-    .lineup-top h3 {
+    .card-top h3 {
       font-family: 'Barlow Condensed', sans-serif;
-      font-size: 2rem;
+      font-size: 1.6rem;
+      font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 1px;
-      line-height: 1;
     }
 
-    .lineup-badge {
+    .badge-confirmed {
       display: inline-flex;
       align-items: center;
       gap: 6px;
       background: rgba(34,197,94,0.1);
-      border: 1px solid rgba(34,197,94,0.35);
-      color: #bbf7d0;
-      padding: 7px 12px;
-      border-radius: 999px;
-      font-size: 0.72rem;
+      border: 1px solid rgba(34,197,94,0.3);
+      color: #86efac;
+      padding: 6px 14px;
+      font-size: 0.68rem;
       font-weight: 800;
       text-transform: uppercase;
-      letter-spacing: 1.2px;
+      letter-spacing: 1.5px;
       white-space: nowrap;
     }
 
-    .lineup-list {
-      list-style: none;
-      display: grid;
-      gap: 12px;
-    }
-
-    .lineup-list li {
+    .responder-list { list-style: none; display: grid; gap: 10px; }
+    .responder-list li {
       display: flex;
       gap: 12px;
-      align-items: flex-start;
-      background: rgba(255,255,255,0.045);
+      align-items: center;
+      padding: 14px 18px;
+      background: rgba(255,255,255,0.04);
       border: 1px solid rgba(255,255,255,0.07);
-      padding: 14px 16px;
-      border-radius: 16px;
-      color: rgba(255,255,255,0.9);
-      line-height: 1.45;
       font-weight: 600;
+      font-size: 0.97rem;
     }
-
-    .check {
-      color: var(--green);
-      font-weight: 900;
-      flex-shrink: 0;
-    }
+    .check { color: var(--green); font-weight: 900; }
 
     .hope-note {
-      margin-top: 16px;
+      margin-top: 18px;
       color: var(--muted);
-      line-height: 1.65;
-      font-size: 0.92rem;
+      font-size: 0.88rem;
+      line-height: 1.7;
+      font-style: italic;
     }
 
     .vendor-grid {
-      margin-top: 24px;
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 0;
     }
 
     .vendor-pill {
-      background: rgba(255,255,255,0.045);
-      border: 1px solid rgba(255,255,255,0.075);
-      border-radius: 16px;
-      padding: 14px 15px;
-      min-height: 78px;
+      padding: 14px 16px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.06);
+      min-height: 72px;
       display: flex;
       flex-direction: column;
       justify-content: center;
     }
+    .vendor-pill strong { display: block; font-size: 0.9rem; margin-bottom: 3px; }
+    .vendor-pill span { font-size: 0.78rem; color: var(--muted); line-height: 1.4; }
 
-    .vendor-pill strong {
-      display: block;
-      color: var(--white);
-      font-size: 0.97rem;
-      margin-bottom: 4px;
-    }
-
-    .vendor-pill span {
-      color: var(--muted);
-      font-size: 0.82rem;
-      line-height: 1.35;
-    }
-
-    .who-section {
-      background: var(--navy);
-    }
-
-    .who-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-      margin-top: 56px;
-    }
-
-    .who-card {
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.07);
-      padding: 40px 32px;
-      position: relative;
-      overflow: hidden;
-      transition: background 0.3s;
-      border-radius: 12px;
-    }
-
-    .who-card::before {
-      content: '';
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, var(--orange), var(--gold));
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 0.3s;
-    }
-
-    .who-card:hover { background: rgba(255,255,255,0.06); }
-    .who-card:hover::before { transform: scaleX(1); }
-
-    .who-num {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 5rem;
-      font-weight: 900;
-      color: rgba(249,115,22,0.1);
-      line-height: 1;
-      margin-bottom: 12px;
-    }
-
-    .who-card h3 {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 1.5rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-bottom: 12px;
-    }
-
-    .who-card p {
-      color: var(--muted);
-      line-height: 1.7;
-      font-size: 0.95rem;
-    }
-
+    /* ─── MUSIC ─── */
     .music-section {
       background: var(--cream);
       color: var(--navy);
-      position: relative;
       overflow: hidden;
+      position: relative;
     }
-
     .music-section::before {
-      content: 'LIVE MUSIC';
+      content: 'MUSIC';
       position: absolute;
-      right: -20px;
-      bottom: 20px;
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: clamp(5rem, 15vw, 12rem);
-      font-weight: 900;
-      color: rgba(8,14,26,0.045);
+      right: -40px;
+      bottom: 10px;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 18rem;
+      color: rgba(8,14,26,0.04);
       pointer-events: none;
       line-height: 1;
-      white-space: nowrap;
     }
 
-    .music-timeline {
-      margin: 58px auto 0;
-      max-width: 900px;
+    .timeline {
+      margin: 60px auto 0;
+      max-width: 860px;
       display: grid;
       gap: 16px;
       position: relative;
@@ -805,69 +867,112 @@
 
     .music-slot {
       display: grid;
-      grid-template-columns: 160px 1fr;
-      gap: 18px;
-      align-items: stretch;
+      grid-template-columns: 150px 1fr;
       background: white;
-      border-radius: 22px;
-      box-shadow: 0 14px 40px rgba(8,14,26,0.09);
-      overflow: hidden;
       border: 1px solid rgba(8,14,26,0.06);
+      border-left: 4px solid var(--orange);
+      box-shadow: 0 10px 40px rgba(8,14,26,0.07);
+      overflow: hidden;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .music-slot:hover {
+      transform: translateX(4px);
+      box-shadow: 0 16px 50px rgba(8,14,26,0.12);
     }
 
     .music-time {
-      background: linear-gradient(135deg, var(--navy), var(--steel));
-      color: var(--gold);
+      background: var(--navy);
+      color: var(--amber);
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
       font-family: 'Barlow Condensed', sans-serif;
-      font-size: 1.35rem;
+      font-size: 1.2rem;
       font-weight: 900;
       letter-spacing: 1px;
-      padding: 24px 12px;
-      text-transform: uppercase;
+      padding: 22px 10px;
     }
 
     .music-info {
-      padding: 24px 24px 24px 4px;
+      padding: 22px 26px 22px 20px;
     }
-
     .music-info h3 {
       font-family: 'Barlow Condensed', sans-serif;
-      font-size: 1.8rem;
+      font-size: 1.6rem;
+      font-weight: 800;
       text-transform: uppercase;
-      line-height: 1;
-      margin-bottom: 8px;
+      letter-spacing: 1px;
+      color: var(--navy);
+      margin-bottom: 6px;
+    }
+    .music-info p { font-size: 0.92rem; color: #4b5563; line-height: 1.6; }
+
+    /* ─── WHO SECTION ─── */
+    .who-section { background: var(--navy); }
+
+    .who-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      margin-top: 56px;
     }
 
-    .music-info p {
-      color: #4b5563;
-      line-height: 1.6;
-      font-size: 0.96rem;
-    }
-
-    .callout-section {
-      background: linear-gradient(120deg, #7f1d1d 0%, #c2410c 50%, #92400e 100%);
+    .who-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      padding: 42px 30px;
       position: relative;
       overflow: hidden;
-      padding: 70px 24px;
+      transition: background 0.3s;
     }
+    .who-card:hover { background: rgba(255,255,255,0.055); }
 
+    .who-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--orange), var(--amber));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.35s;
+    }
+    .who-card:hover::after { transform: scaleX(1); }
+
+    .who-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 5rem;
+      color: rgba(249,115,22,0.08);
+      line-height: 1;
+      letter-spacing: 2px;
+    }
+    .who-card h3 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 12px;
+    }
+    .who-card p { color: var(--muted); line-height: 1.75; font-size: 0.93rem; }
+
+    /* ─── CALLOUT BANNER ─── */
+    .callout-section {
+      background: linear-gradient(120deg, var(--blood) 0%, #c2410c 55%, #92400e 100%);
+      padding: 80px 24px;
+      position: relative;
+      overflow: hidden;
+    }
     .callout-section::before {
       content: '';
       position: absolute;
       inset: 0;
       background: repeating-linear-gradient(
-        45deg,
-        transparent,
-        transparent 40px,
-        rgba(255,255,255,0.03) 40px,
-        rgba(255,255,255,0.03) 41px
+        45deg, transparent, transparent 50px,
+        rgba(255,255,255,0.025) 50px, rgba(255,255,255,0.025) 51px
       );
     }
-
     .callout-inner {
       position: relative;
       z-index: 1;
@@ -876,47 +981,42 @@
       justify-content: space-between;
       gap: 40px;
       flex-wrap: wrap;
+      max-width: 1160px;
+      margin: 0 auto;
     }
-
     .callout-inner h2 {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: clamp(2rem, 6vw, 3.2rem);
-      font-weight: 900;
-      text-transform: uppercase;
-      line-height: 1;
-      letter-spacing: -1px;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.2rem, 6vw, 4rem);
+      letter-spacing: 2px;
+      line-height: 0.9;
     }
-
     .callout-inner p {
-      color: rgba(255,255,255,0.84);
+      color: rgba(255,255,255,0.82);
       max-width: 520px;
-      line-height: 1.7;
+      line-height: 1.75;
+      margin-top: 12px;
     }
-    
-    .callout-btn {
-      background: white; 
-      color: #7f1d1d; 
-      font-weight: 900; 
-      flex-shrink: 0;
+    .btn-white {
+      background: white;
+      color: var(--blood);
+      font-weight: 800;
     }
-    
-    .callout-btn:hover {
-      background: #fdf6ec;
-      color: #9b1c1c;
+    .btn-white:hover {
+      background: var(--cream);
+      transform: translateY(-3px);
     }
 
-    .signup-section {
-      background: var(--navy);
-    }
+    /* ─── FORM / SIGNUP ─── */
+    .signup-section { background: var(--navy); }
 
     .form-shell {
-      background: #0f1826;
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 28px;
-      padding: 48px;
-      max-width: 860px;
+      background: var(--panel);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-top: 3px solid var(--orange);
+      padding: 56px;
+      max-width: 900px;
       margin: 0 auto;
-      box-shadow: 0 40px 100px rgba(0,0,0,0.5);
+      box-shadow: 0 60px 120px rgba(0,0,0,0.6);
     }
 
     .form-grid {
@@ -924,770 +1024,689 @@
       grid-template-columns: 1fr 1fr;
       gap: 20px;
     }
-
     .form-full { grid-column: 1 / -1; }
 
     .field label {
       display: block;
-      font-size: 0.78rem;
+      font-size: 0.7rem;
       font-weight: 800;
       text-transform: uppercase;
-      letter-spacing: 1.5px;
+      letter-spacing: 2px;
       color: var(--muted);
       margin-bottom: 8px;
     }
-
     .field input,
     .field select,
     .field textarea {
       width: 100%;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 12px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.09);
       padding: 14px 18px;
       font-size: 0.95rem;
       font-family: 'Barlow', sans-serif;
       color: var(--white);
-      transition: border 0.2s, background 0.2s, box-shadow 0.2s;
-      outline: transparent;
+      outline: none;
+      transition: border 0.2s, background 0.2s;
     }
-
-    .field input::placeholder,
-    .field textarea::placeholder {
-      color: rgba(255,255,255,0.25);
-    }
-
-    .field input:focus,
-    .field select:focus,
-    .field textarea:focus {
+    .field input::placeholder, .field textarea::placeholder { color: rgba(255,255,255,0.2); }
+    .field input:focus, .field select:focus, .field textarea:focus {
       border-color: var(--orange);
-      background: rgba(249,115,22,0.06);
-      box-shadow: 0 0 0 2px rgba(249,115,22,0.2); 
+      background: rgba(249,115,22,0.05);
     }
-
-    .field select option {
-      background: #131d2e;
-      color: white;
-    }
-
-    .field textarea {
-      min-height: 110px;
-      resize: vertical;
-    }
+    .field select option { background: #0d1420; }
+    .field textarea { min-height: 110px; resize: vertical; }
 
     .submit-btn {
       width: 100%;
       background: linear-gradient(135deg, var(--orange), #ea580c);
       color: white;
       border: none;
-      padding: 18px 32px;
-      border-radius: 999px;
-      font-size: 1rem;
-      font-weight: 800;
-      font-family: 'Barlow Condensed', sans-serif;
+      padding: 20px 32px;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.3rem;
+      letter-spacing: 4px;
       text-transform: uppercase;
-      letter-spacing: 2px;
       cursor: pointer;
       margin-top: 8px;
       transition: all 0.25s;
-      box-shadow: 0 10px 40px rgba(249,115,22,0.3);
+      box-shadow: 0 16px 50px rgba(249,115,22,0.35);
     }
-
     .submit-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 20px 50px rgba(249,115,22,0.45);
+      transform: translateY(-3px);
+      box-shadow: 0 28px 60px rgba(249,115,22,0.5);
     }
 
+    /* ─── FOOTER ─── */
     footer {
-      background: #040810;
-      border-top: 1px solid rgba(255,255,255,0.06);
-      padding: 48px 24px;
+      background: #030610;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      padding: 56px 24px 40px;
       text-align: center;
     }
-
     .footer-logo {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 1.5rem;
-      font-weight: 900;
-      text-transform: uppercase;
-      letter-spacing: 3px;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem;
+      letter-spacing: 4px;
       margin-bottom: 16px;
     }
-
     .footer-logo span { color: var(--orange); }
-
-    footer p {
-      color: var(--muted);
-      font-size: 0.9rem;
-      line-height: 1.8;
-    }
-
-    footer a {
-      color: var(--orange);
-      text-decoration: none;
-    }
-
-    footer a:hover {
-      text-decoration: underline;
-    }
 
     .footer-divider {
       width: 60px;
       height: 2px;
-      background: linear-gradient(90deg, var(--orange), var(--gold));
+      background: linear-gradient(90deg, var(--orange), var(--amber));
       margin: 20px auto;
-      border-radius: 999px;
     }
-    
-    .footer-copyright {
-      margin-top: 20px; 
-      font-size: 0.78rem; 
+
+    footer p { color: var(--muted); font-size: 0.9rem; line-height: 1.9; }
+    footer a { color: var(--orange); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+    .footer-copy { margin-top: 24px; font-size: 0.75rem; opacity: 0.45; }
+
+    /* ─── STAR DIVIDER ─── */
+    .star-divider {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      justify-content: center;
+      padding: 12px 0;
+      color: var(--orange);
+      font-size: 0.8rem;
+      letter-spacing: 4px;
       opacity: 0.5;
     }
+    .star-divider::before, .star-divider::after {
+      content: '';
+      flex: 1;
+      max-width: 120px;
+      height: 1px;
+      background: var(--orange);
+    }
 
+    /* ─── RESPONSIVE ─── */
     @media (max-width: 960px) {
-      .lineup-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .vendor-grid {
-        grid-template-columns: 1fr;
-      }
+      .sponsor-inner { grid-template-columns: 1fr; }
+      .sponsor-left, .sponsor-right { padding: 56px 36px; }
+      .sponsor-section::before { display: none; }
+      .about-grid, .lineup-grid { grid-template-columns: 1fr; }
+      .about-section::before { display: none; }
+      .who-grid { grid-template-columns: repeat(2, 1fr); }
     }
 
     @media (max-width: 820px) {
-      nav {
-        padding: 14px 16px;
-      }
+      nav { padding: 14px 16px; }
+      .nav-links { display: none; }
 
-      .nav-logo {
-        font-size: 1.05rem;
-      }
+      .hero { padding: 110px 16px 80px; }
+      .hero-title { letter-spacing: 2px; }
+      .hero-title .line2 { -webkit-text-stroke-width: 1.5px; }
 
-      .nav-links {
-        display: none;
-      }
+      .detail-strip { gap: 4px; }
+      .ds-item { width: 100%; }
 
-      .hero {
-        padding: 120px 16px 60px;
-      }
+      .countdown { gap: 6px; flex-wrap: wrap; }
+      .cd-num { width: 72px; height: 72px; font-size: 2.5rem; }
+      .cd-sep { font-size: 2.5rem; }
 
-      h1 { 
-        font-size: clamp(2.8rem, 12vw, 4.5rem);
-        margin-bottom: 20px;
-      }
+      .btn-row { flex-direction: column; width: 100%; }
+      .btn { width: 100%; justify-content: center; }
 
-      h1 em {
-        -webkit-text-stroke-width: 1px;
-      }
+      .section { padding: 60px 16px; }
 
-      .hero-sub {
-        font-size: 1rem;
-        margin-bottom: 28px;
-      }
+      .sponsor-left { padding: 44px 24px; }
+      .sponsor-right { padding: 44px 24px; }
+      .sponsor-amount { font-size: clamp(4rem, 20vw, 7rem); }
 
-      .hero-alert {
-        border-radius: 18px;
-        width: 100%;
-      }
+      .vendor-grid { grid-template-columns: 1fr; }
+      .who-grid { grid-template-columns: 1fr; }
 
-      .btn-group {
-        flex-direction: column;
-        width: 100%;
-        gap: 12px;
-      }
+      .music-slot { grid-template-columns: 1fr; }
+      .music-time { justify-content: flex-start; padding: 14px 20px; }
 
-      .btn {
-        width: 100%;
-      }
+      .callout-inner { flex-direction: column; text-align: center; }
+      .btn-white { width: 100%; justify-content: center; }
 
-      .detail-strip {
-        gap: 6px;
-      }
+      .form-grid { grid-template-columns: 1fr; }
+      .form-full { grid-column: 1; }
+      .form-shell { padding: 32px 20px; }
 
-      .ds-item { 
-        width: 100%; 
-        justify-content: flex-start; 
-        padding: 16px 20px; 
-      }
-
-      .ds-item:first-child {
-        border-radius: 12px 12px 0 0;
-      }
-
-      .ds-item:last-child {
-        border-radius: 0 0 12px 12px;
-      }
-
-      .countdown {
-        gap: 8px;
-        flex-wrap: wrap;
-      }
-
-      .cd-box {
-        min-width: 64px;
-      }
-
-      .cd-num {
-        width: 64px;
-        height: 64px;
-        font-size: 1.8rem;
-        border-radius: 10px;
-      }
-
-      .cd-sep {
-        font-size: 2rem;
-        margin-top: 8px;
-      }
-
-      .section {
-        padding: 60px 16px;
-      }
-      
-      .about-grid {
-        grid-template-columns: 1fr;
-        gap: 40px;
-      }
-
-      .about-section::before {
-        display: none;
-      }
-      
-      .feat-card { 
-        flex-direction: column; 
-        align-items: center; 
-        text-align: center; 
-        padding: 24px; 
-      }
-
-      .who-grid {
-        grid-template-columns: 1fr;
-        margin-top: 32px;
-        gap: 12px;
-      }
-
-      .who-card {
-        padding: 24px 20px;
-      }
-
-      .lineup-card {
-        padding: 24px 18px;
-        border-radius: 20px;
-      }
-
-      .lineup-top {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .music-slot {
-        grid-template-columns: 1fr;
-      }
-
-      .music-time {
-        justify-content: flex-start;
-        padding: 16px 22px;
-      }
-
-      .music-info {
-        padding: 20px 22px;
-      }
-      
-      .callout-section {
-        padding: 50px 16px;
-      }
-
-      .callout-inner {
-        flex-direction: column;
-        gap: 24px;
-        text-align: center;
-      }
-
-      .callout-btn {
-        width: 100%;
-        white-space: normal;
-      }
-
-      .form-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .form-full {
-        grid-column: 1;
-      }
-
-      .form-shell {
-        padding: 24px 16px;
-        border-radius: 16px;
-      }
+      .lineup-card { padding: 24px 18px; }
+      .card-top { flex-direction: column; align-items: flex-start; }
     }
 
-    @media (max-width: 380px) {
-      .cd-num {
-        width: 54px;
-        height: 54px;
-        font-size: 1.5rem;
-      }
-
-      .cd-sep {
-        display: none;
-      }
-
-      .countdown {
-        gap: 12px;
-      }
-
-      .nav-logo {
-        font-size: 0.95rem;
-      }
+    @media (max-width: 400px) {
+      .cd-num { width: 58px; height: 58px; font-size: 2rem; }
+      .cd-sep { display: none; }
     }
   </style>
+
 </head>
 <body>
+
+  <!-- NAV -->
 
   <nav>
     <div class="nav-logo">Forged to <span>Protect</span></div>
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
+      <li><a href="#sponsor">Sponsor</a></li>
       <li><a href="#confirmed">Confirmed</a></li>
       <li><a href="#music">Music</a></li>
-      <li><a href="#who">Get Involved</a></li>
+      <li><a href="#signup">Get Involved</a></li>
       <li><a href="#signup" class="nav-cta">Register Now</a></li>
     </ul>
   </nav>
 
+  <!-- HERO -->
+
   <header class="hero" id="top">
-    <div class="orb orb-1"></div>
-    <div class="orb orb-2"></div>
-    <div class="orb orb-3"></div>
+    <div class="hero-bg"></div>
+    <div class="hero-sweep"></div>
 
-    <div class="hero-content">
-      <div class="pill">Community Event · Honoring First Responders & Veterans</div>
+```
+<div class="hero-content">
+  <div class="event-badge">Community Event · Honoring First Responders &amp; Veterans</div>
 
-      <h1>
-        Forged
-        <em>to Protect</em>
-      </h1>
+  <h1 class="hero-title">
+    <span class="line1">Forged</span>
+    <span class="line2">to Protect</span>
+  </h1>
 
-      <p class="hero-sub">
-        A powerful community gathering to honor the men and women who serve, protect, respond, sacrifice, and stand ready when others need help most.
-      </p>
+  <p class="hero-subtitle">
+    May 16, 2026 &nbsp;·&nbsp; <span>The Foundery Church</span> &nbsp;·&nbsp; Wellsburg, WV
+  </p>
 
-      <div class="hero-alert">
-        <span>●</span>
-        Confirmed emergency agencies, local vendors, food, family activities, and live music from 4:00 PM to 6:00 PM.
-      </div>
+  <p class="hero-desc">
+    A powerful community gathering to honor the men and women who serve, protect, respond, sacrifice, and stand ready when others need help most.
+  </p>
 
-      <div class="detail-strip">
-        <div class="ds-item">
-          <span class="ds-icon" role="img" aria-label="Date">📅</span>
-          <div>
-            <span class="ds-label">Date</span>
-            <span class="ds-val">Saturday, May 16</span>
-          </div>
-        </div>
+  <div class="live-pill">
+    <div class="live-dot"></div>
+    Confirmed: Emergency agencies · Local vendors · Food · Family activities · Live music 4–6 PM
+  </div>
 
-        <div class="ds-item">
-          <span class="ds-icon" role="img" aria-label="Time">🕑</span>
-          <div>
-            <span class="ds-label">Main Event</span>
-            <span class="ds-val">2:00 PM – 4:00 PM</span>
-          </div>
-        </div>
-
-        <div class="ds-item">
-          <span class="ds-icon" role="img" aria-label="Music">🎶</span>
-          <div>
-            <span class="ds-label">After Party</span>
-            <span class="ds-val">4:00 PM – 6:00 PM</span>
-          </div>
-        </div>
-
-        <div class="ds-item">
-          <span class="ds-icon" role="img" aria-label="Location">📍</span>
-          <div>
-            <span class="ds-label">Location</span>
-            <span class="ds-val">The Foundery Church · Wellsburg, WV</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="countdown" id="countdown">
-        <div class="cd-box">
-          <div class="cd-num" id="days">00</div>
-          <div class="cd-label">Days</div>
-        </div>
-
-        <div class="cd-sep">:</div>
-
-        <div class="cd-box">
-          <div class="cd-num" id="hours">00</div>
-          <div class="cd-label">Hours</div>
-        </div>
-
-        <div class="cd-sep">:</div>
-
-        <div class="cd-box">
-          <div class="cd-num" id="minutes">00</div>
-          <div class="cd-label">Minutes</div>
-        </div>
-
-        <div class="cd-sep">:</div>
-
-        <div class="cd-box">
-          <div class="cd-num" id="seconds">00</div>
-          <div class="cd-label">Seconds</div>
-        </div>
-      </div>
-
-      <div class="btn-group">
-        <a href="#signup" class="btn btn-primary">Register / Sign Up →</a>
-        <a href="#confirmed" class="btn btn-ghost">See Who’s Coming</a>
+  <div class="detail-strip">
+    <div class="ds-item">
+      <span class="ds-icon">📅</span>
+      <div>
+        <span class="ds-label">Date</span>
+        <span class="ds-val">Saturday, May 16</span>
       </div>
     </div>
+    <div class="ds-item">
+      <span class="ds-icon">🕑</span>
+      <div>
+        <span class="ds-label">Main Event</span>
+        <span class="ds-val">2:00 PM – 4:00 PM</span>
+      </div>
+    </div>
+    <div class="ds-item">
+      <span class="ds-icon">🎶</span>
+      <div>
+        <span class="ds-label">After Party</span>
+        <span class="ds-val">4:00 PM – 6:00 PM</span>
+      </div>
+    </div>
+    <div class="ds-item">
+      <span class="ds-icon">📍</span>
+      <div>
+        <span class="ds-label">Location</span>
+        <span class="ds-val">The Foundery Church · Wellsburg, WV</span>
+      </div>
+    </div>
+  </div>
 
-    <div class="scroll-hint">Scroll</div>
+  <div class="countdown" id="countdown">
+    <div class="cd-unit">
+      <div class="cd-num" id="days">00</div>
+      <div class="cd-label">Days</div>
+    </div>
+    <div class="cd-sep">:</div>
+    <div class="cd-unit">
+      <div class="cd-num" id="hours">00</div>
+      <div class="cd-label">Hours</div>
+    </div>
+    <div class="cd-sep">:</div>
+    <div class="cd-unit">
+      <div class="cd-num" id="minutes">00</div>
+      <div class="cd-label">Minutes</div>
+    </div>
+    <div class="cd-sep">:</div>
+    <div class="cd-unit">
+      <div class="cd-num" id="seconds">00</div>
+      <div class="cd-label">Seconds</div>
+    </div>
+  </div>
+
+  <div class="btn-row">
+    <a href="#signup" class="btn btn-primary">Register / Sign Up →</a>
+    <a href="#sponsor" class="btn btn-gold">Become a Sponsor ★</a>
+    <a href="#confirmed" class="btn btn-ghost">See Who's Coming</a>
+  </div>
+</div>
+
+<div class="scroll-hint">Scroll</div>
+```
+
   </header>
+
+  <!-- SPONSOR SECTION — high-urgency, conversion-focused -->
+
+  <section class="sponsor-section" id="sponsor">
+    <div class="sponsor-inner">
+
+```
+  <div class="sponsor-left">
+    <div class="sponsor-tag">⚡ One Spot Only — Title Sponsor</div>
+    <div class="sponsor-need">We Need One</div>
+    <div class="sponsor-amount">$500</div>
+    <div class="sponsor-type">Title Sponsor</div>
+
+    <p class="sponsor-impact">
+      Your gift directly provides <strong>food and appreciation gifts</strong> for the first responders and veterans we're honoring at this year's event. One business. One decision. Real impact.
+    </p>
+
+    <div class="sponsor-urgency">
+      <div class="urgency-dot"></div>
+      This is a single-slot opportunity — once it's claimed, it's gone.
+    </div>
+
+    <a href="#signup" class="btn btn-gold">Be the Business Behind the Honor →</a>
+  </div>
+
+  <div class="sponsor-right">
+    <div class="perks-title">★ What Your Sponsorship Includes</div>
+
+    <ul class="perk-list">
+      <li class="perk-item">
+        <span class="perk-icon">🌐</span>
+        <div class="perk-text">
+          <strong>Website Recognition All Year</strong>
+          <span>Listed as Primary Sponsor on the event website from now through the end of the year.</span>
+        </div>
+      </li>
+      <li class="perk-item">
+        <span class="perk-icon">🏷️</span>
+        <div class="perk-text">
+          <strong>Logo on the Event Banner</strong>
+          <span>Prominent placement on the physical banner displayed at the event for all attendees to see.</span>
+        </div>
+      </li>
+      <li class="perk-item">
+        <span class="perk-icon">📣</span>
+        <div class="perk-text">
+          <strong>Thanked Publicly During the Event</strong>
+          <span>Your business is recognized and celebrated from the stage in front of the full crowd.</span>
+        </div>
+      </li>
+      <li class="perk-item">
+        <span class="perk-icon">📲</span>
+        <div class="perk-text">
+          <strong>Featured in Event Promotions</strong>
+          <span>Included in social media posts, digital promotions, and community outreach leading up to May 16.</span>
+        </div>
+      </li>
+      <li class="perk-item">
+        <span class="perk-icon">🤝</span>
+        <div class="perk-text">
+          <strong>First Right of Refusal for Future Events</strong>
+          <span>If this becomes an annual event, you get the first call before anyone else.</span>
+        </div>
+      </li>
+      <li class="perk-item">
+        <span class="perk-icon">🙏</span>
+        <div class="perk-text">
+          <strong>Thank You Post-Event Recognition</strong>
+          <span>Dedicated thank-you acknowledgment after the event across digital channels.</span>
+        </div>
+      </li>
+    </ul>
+
+    <div class="sponsor-tagline">
+      Be the business <span>behind the honor.</span>
+    </div>
+
+    <a href="#signup" class="btn btn-primary" style="width:100%;justify-content:center;">
+      Contact Us to Sponsor →
+    </a>
+  </div>
+
+</div>
+```
+
+  </section>
+
+  <!-- ABOUT -->
 
   <section class="about-section section" id="about">
     <div class="container">
       <div class="about-grid">
         <div class="about-text">
-          <div class="eyebrow">About the Event</div>
-          <h2 class="section-h text-navy mb-8">
-            More Than an Event.<br>A Community Statement.
+          <div class="about-eyebrow">About the Event</div>
+          <h2 class="section-h" style="margin-bottom:28px;">
+            More Than<br>an Event.<br>A Statement.
           </h2>
-
           <p>
             Forged to Protect is a chance for families, kids, churches, businesses, veterans, and local agencies to come together and say <em>thank you</em> to the people who show up when our community needs them most.
           </p>
-
           <p>
             We believe in honoring service — military and civilian alike — not just with words but with presence, recognition, and real community celebration.
           </p>
-
-          <a href="#confirmed" class="btn btn-primary mt-3">View Confirmed Lineup →</a>
+          <a href="#confirmed" class="btn btn-primary" style="margin-top:8px;">View Confirmed Lineup →</a>
         </div>
 
-        <div class="about-features">
-          <div class="feat-card">
-            <div class="feat-icon" role="img" aria-label="Fire Truck">🚒</div>
-            <div>
-              <h3>Touch-a-Truck</h3>
-              <p>Families can meet local first responders, see emergency vehicles up close, ask questions, and help kids connect with real community heroes.</p>
-            </div>
-          </div>
-
-          <div class="feat-card">
-            <div class="feat-icon" role="img" aria-label="Medal">🎖️</div>
-            <div>
-              <h3>Veteran & First Responder Appreciation</h3>
-              <p>We recognize and celebrate those who have served through military service, law enforcement, fire, EMS, dispatch, and public safety.</p>
-            </div>
-          </div>
-
-          <div class="feat-card">
-            <div class="feat-icon" role="img" aria-label="Music Note">🎵</div>
-            <div>
-              <h3>Food, Vendors & Live Music</h3>
-              <p>Shop local vendors, enjoy community fellowship, and stay after for live music from 4:00 PM to 6:00 PM.</p>
-            </div>
-          </div>
+```
+    <div class="feat-list">
+      <div class="feat-card">
+        <div class="feat-icon">🚒</div>
+        <div>
+          <h3>Touch-a-Truck</h3>
+          <p>Families can meet local first responders, see emergency vehicles up close, and help kids connect with real community heroes.</p>
+        </div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">🎖️</div>
+        <div>
+          <h3>Veteran &amp; First Responder Appreciation</h3>
+          <p>We recognize and celebrate those who have served through military, law enforcement, fire, EMS, dispatch, and public safety.</p>
+        </div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">🎵</div>
+        <div>
+          <h3>Food, Vendors &amp; Live Music</h3>
+          <p>Shop local vendors, enjoy community fellowship, and stay for live music from 4:00 PM to 6:00 PM.</p>
         </div>
       </div>
     </div>
+  </div>
+</div>
+```
+
   </section>
+
+  <!-- CONFIRMED -->
 
   <section class="confirmed-section section" id="confirmed">
     <div class="container">
-      <div class="text-center">
-        <div class="eyebrow inline-flex">Confirmed Attendance</div>
+      <div class="tc">
+        <div class="eyebrow" style="justify-content:center;">Confirmed Attendance</div>
         <h2 class="section-h">The Community Is Showing Up</h2>
         <p class="section-sub">
-          We already have first responders, departments, vendors, and community partners confirmed — and we are still hoping to add even more before event day.
+          First responders, departments, vendors, and community partners are already confirmed — and we're still adding more before event day.
         </p>
       </div>
 
-      <div class="lineup-grid">
-        <div class="lineup-card">
-          <div class="lineup-top">
-            <h3>First Responders & Agencies</h3>
-            <div class="lineup-badge">Confirmed</div>
-          </div>
+```
+  <div class="lineup-grid">
+    <div class="lineup-card">
+      <div class="card-top">
+        <h3>First Responders &amp; Agencies</h3>
+        <div class="badge-confirmed">✓ Confirmed</div>
+      </div>
+      <ul class="responder-list">
+        <li><span class="check">✓</span> Brooke County EMS</li>
+        <li><span class="check">✓</span> Brooke County Sheriff's Office</li>
+        <li><span class="check">✓</span> Bethany Volunteer Fire Department</li>
+        <li><span class="check">✓</span> Colliers Volunteer Fire Department</li>
+        <li><span class="check">✓</span> McKinleyville Volunteer Fire Department</li>
+      </ul>
+      <p class="hope-note">More departments, vehicles, demonstrations, and community partners may be added as confirmations continue coming in.</p>
+    </div>
 
-          <ul class="lineup-list">
-            <li><span class="check">✓</span> Brooke County EMS</li>
-            <li><span class="check">✓</span> Brooke County Sheriff’s Office</li>
-            <li><span class="check">✓</span> Bethany Volunteer Fire Department</li>
-            <li><span class="check">✓</span> Colliers Volunteer Fire Department</li>
-            <li><span class="check">✓</span> McKinleyville Volunteer Fire Department</li>
-          </ul>
-
-          <p class="hope-note">
-            More departments, vehicles, demonstrations, and community partners may be added as confirmations continue coming in.
-          </p>
+    <div class="lineup-card">
+      <div class="card-top">
+        <h3>Community Vendors</h3>
+        <div class="badge-confirmed">Local</div>
+      </div>
+      <div class="vendor-grid">
+        <div class="vendor-pill">
+          <strong>Tracy's Scented Delights</strong>
+          <span>Car freshies, wax melt beads, keychains &amp; more.</span>
         </div>
-
-        <div class="lineup-card">
-          <div class="lineup-top">
-            <h3>Community Vendors</h3>
-            <div class="lineup-badge">Local Vendors</div>
-          </div>
-
-          <div class="vendor-grid">
-            <div class="vendor-pill">
-              <strong>Tracy’s Scented Delights</strong>
-              <span>Car freshies, wax melt beads, pens, keychains, and soft plastic fishing baits.</span>
-            </div>
-
-            <div class="vendor-pill">
-              <strong>Tupperware</strong>
-              <span>Tupperware and kitchen accessories.</span>
-            </div>
-
-            <div class="vendor-pill">
-              <strong>Reverie Crafts</strong>
-              <span>T-shirts and keychains geared toward veterans and first responders.</span>
-            </div>
-
-            <div class="vendor-pill">
-              <strong>Archie’s Fidgets</strong>
-              <span>3D printed items, fidgets, and toys.</span>
-            </div>
-
-            <div class="vendor-pill">
-              <strong>Delia’s Farmhouse Bakery</strong>
-              <span>Breads, cookies, cinnamon rolls, and other baked goods.</span>
-            </div>
-
-            <div class="vendor-pill">
-              <strong>Moments By JessieJay</strong>
-              <span>Local vendor joining the community lineup.</span>
-            </div>
-
-            <div class="vendor-pill">
-              <strong>HealthSource Wellsburg</strong>
-              <span>Community health and wellness partner.</span>
-            </div>
-
-            <div class="vendor-pill">
-              <strong>Delicious Delights by Ashley</strong>
-              <span>Cakes, cake pops, and chocolate-covered treats.</span>
-            </div>
-
-            <div class="vendor-pill">
-              <strong>Hana’s Market Home</strong>
-              <span>Tumblers, shirts, mousepads, candles, wax melts, car air fresheners, and slime.</span>
-            </div>
-
-            <div class="vendor-pill">
-              <strong>Ruth’s Flowers & Pies</strong>
-              <span>Flowers, pies, and handmade local goodness.</span>
-            </div>
-          </div>
+        <div class="vendor-pill">
+          <strong>Tupperware</strong>
+          <span>Kitchen accessories &amp; Tupperware products.</span>
+        </div>
+        <div class="vendor-pill">
+          <strong>Reverie Crafts</strong>
+          <span>Veteran &amp; first responder tees and keychains.</span>
+        </div>
+        <div class="vendor-pill">
+          <strong>Archie's Fidgets</strong>
+          <span>3D printed items, fidgets &amp; toys.</span>
+        </div>
+        <div class="vendor-pill">
+          <strong>Delia's Farmhouse Bakery</strong>
+          <span>Breads, cookies &amp; cinnamon rolls.</span>
+        </div>
+        <div class="vendor-pill">
+          <strong>Moments By JessieJay</strong>
+          <span>Local community vendor.</span>
+        </div>
+        <div class="vendor-pill">
+          <strong>HealthSource Wellsburg</strong>
+          <span>Community health &amp; wellness.</span>
+        </div>
+        <div class="vendor-pill">
+          <strong>Delicious Delights by Ashley</strong>
+          <span>Cakes, cake pops &amp; chocolate treats.</span>
+        </div>
+        <div class="vendor-pill">
+          <strong>Hana's Market Home</strong>
+          <span>Tumblers, candles, wax melts &amp; slime.</span>
+        </div>
+        <div class="vendor-pill">
+          <strong>Ruth's Flowers &amp; Pies</strong>
+          <span>Flowers, pies &amp; handmade goodness.</span>
         </div>
       </div>
     </div>
+  </div>
+</div>
+```
+
   </section>
+
+  <!-- MUSIC -->
 
   <section class="music-section section" id="music">
     <div class="container">
-      <div class="text-center">
-        <div class="eyebrow inline-flex">After Party Music</div>
-        <h2 class="section-h text-navy">Live Music From 4–6 PM</h2>
+      <div class="tc">
+        <div class="about-eyebrow" style="justify-content:center;">After Party</div>
+        <h2 class="section-h" style="color:var(--navy);">Live Music · 4 – 6 PM</h2>
         <p class="section-sub" style="color:#4b5563;">
-          After the main Touch-a-Truck and appreciation portion of the event, stay for music, fellowship, food, and a community celebration.
+          After the main event, stay for music, fellowship, food, and community celebration.
         </p>
       </div>
 
-      <div class="music-timeline">
-        <div class="music-slot">
-          <div class="music-time">4:00–4:30</div>
-          <div class="music-info">
-            <h3>The Foundery Worship Team</h3>
-            <p>Led by Doc Roe, opening the after party with worship and community-centered music.</p>
-          </div>
-        </div>
-
-        <div class="music-slot">
-          <div class="music-time">4:30–5:00</div>
-          <div class="music-info">
-            <h3>Jim & Jo-Ellen Haizlette</h3>
-            <p>With support from the kids at CCA, bringing a special community performance to the event.</p>
-          </div>
-        </div>
-
-        <div class="music-slot">
-          <div class="music-time">5:00–5:30</div>
-          <div class="music-info">
-            <h3>Bill Lamb</h3>
-            <p>A featured music set during the Forged to Protect after party.</p>
-          </div>
-        </div>
-
-        <div class="music-slot">
-          <div class="music-time">5:30–6:00</div>
-          <div class="music-info">
-            <h3>Kara & Jace</h3>
-            <p>Closing out the event with the final live music set of the evening.</p>
-          </div>
-        </div>
+```
+  <div class="timeline">
+    <div class="music-slot">
+      <div class="music-time">4:00–4:30</div>
+      <div class="music-info">
+        <h3>The Foundery Worship Team</h3>
+        <p>Led by Doc Roe, opening the after party with worship and community-centered music.</p>
       </div>
     </div>
+    <div class="music-slot">
+      <div class="music-time">4:30–5:00</div>
+      <div class="music-info">
+        <h3>Jim &amp; Jo-Ellen Haizlette</h3>
+        <p>With support from the kids at CCA — bringing a special community performance to the event.</p>
+      </div>
+    </div>
+    <div class="music-slot">
+      <div class="music-time">5:00–5:30</div>
+      <div class="music-info">
+        <h3>Bill Lamb</h3>
+        <p>A featured music set during the Forged to Protect after party.</p>
+      </div>
+    </div>
+    <div class="music-slot">
+      <div class="music-time">5:30–6:00</div>
+      <div class="music-info">
+        <h3>Kara &amp; Jace</h3>
+        <p>Closing out the evening with the final live music set of the night.</p>
+      </div>
+    </div>
+  </div>
+</div>
+```
+
   </section>
+
+  <!-- WHO -->
 
   <section class="who-section section" id="who">
     <div class="container">
-      <div class="text-center mb-4">
-        <div class="eyebrow inline-flex">Everyone Has a Part to Play</div>
+      <div class="tc">
+        <div class="eyebrow" style="justify-content:center;">Everyone Has a Part to Play</div>
+        <h2 class="section-h">Who We're Inviting</h2>
       </div>
 
-      <h2 class="section-h text-center">
-        Who We're Inviting
-      </h2>
+```
+  <div class="who-grid">
+    <div class="who-card">
+      <div class="who-num">01</div>
+      <h3>Families &amp; Kids</h3>
+      <p>Bring the whole family. Meet local heroes, see the vehicles, enjoy the atmosphere, and show your kids what gratitude looks like in action.</p>
+    </div>
+    <div class="who-card">
+      <div class="who-num">02</div>
+      <h3>First Responders</h3>
+      <p>Come be honored. Bring your vehicle, run a demo, and let your community see the heart behind the badge, helmet, and uniform.</p>
+    </div>
+    <div class="who-card">
+      <div class="who-num">03</div>
+      <h3>Local Businesses</h3>
+      <p>Support a meaningful local event. Sponsor appreciation efforts, donate food or supplies, or set up as a community partner.</p>
+    </div>
+    <div class="who-card">
+      <div class="who-num">04</div>
+      <h3>Veteran Organizations</h3>
+      <p>Connect, be recognized, and share resources. We want every veteran to feel seen and celebrated.</p>
+    </div>
+    <div class="who-card">
+      <div class="who-num">05</div>
+      <h3>Food Vendors</h3>
+      <p>Set up your booth and serve our community. Vendor spots are limited — sign up early to reserve your space.</p>
+    </div>
+    <div class="who-card">
+      <div class="who-num">06</div>
+      <h3>Volunteers &amp; Donors</h3>
+      <p>Donate supplies, help with setup, or give your time. It all matters and we need you.</p>
+    </div>
+  </div>
+</div>
+```
 
-      <div class="who-grid">
-        <div class="who-card">
-          <div class="who-num">01</div>
-          <h3>Families & Kids</h3>
-          <p>Bring the whole family. Meet local heroes, see the vehicles, enjoy the atmosphere, and show your kids what gratitude looks like in action.</p>
-        </div>
+  </section>
 
-        <div class="who-card">
-          <div class="who-num">02</div>
-          <h3>First Responders</h3>
-          <p>Come be honored. Bring your vehicle, run a demonstration, and let your community see the heart behind the badge, the helmet, and the uniform.</p>
-        </div>
+  <!-- CALLOUT BANNER -->
 
-        <div class="who-card">
-          <div class="who-num">03</div>
-          <h3>Local Businesses</h3>
-          <p>Support a meaningful local event. Sponsor appreciation efforts, donate food or supplies, or set up as a community partner vendor.</p>
-        </div>
-
-        <div class="who-card">
-          <div class="who-num">04</div>
-          <h3>Veteran Organizations</h3>
-          <p>Connect, be recognized, and share resources. We want every veteran to feel seen and celebrated at this event.</p>
-        </div>
-
-        <div class="who-card">
-          <div class="who-num">05</div>
-          <h3>Food Vendors</h3>
-          <p>Set up your booth and serve our community. Vendor spots are limited — sign up early to reserve your space.</p>
-        </div>
-
-        <div class="who-card">
-          <div class="who-num">06</div>
-          <h3>Volunteers & Donors</h3>
-          <p>Help us make this happen. Whether you're donating supplies, helping with setup, or sharing your time — it all matters.</p>
-        </div>
+  <section class="callout-section">
+    <div class="callout-inner">
+      <div>
+        <h2>Help Us Make This Bigger<br>Than an Event</h2>
+        <p>Inviting local businesses, churches, vendors, departments, families, and community members to honor first responders in a meaningful, lasting way.</p>
       </div>
+      <a href="#signup" class="btn btn-white">Sign Up to Participate →</a>
     </div>
   </section>
 
-  <section class="callout-section section">
-    <div class="container">
-      <div class="callout-inner">
-        <div>
-          <h2>Help Us Make This Bigger<br>Than an Event</h2>
-          <p class="mt-4">
-            We're inviting local businesses, churches, vendors, departments, families, and community members to help us honor first responders in a meaningful, lasting way.
-          </p>
-        </div>
-
-        <a href="#signup" class="btn callout-btn">
-          Sign Up to Participate →
-        </a>
-      </div>
-    </div>
-  </section>
+  <!-- SIGNUP FORM -->
 
   <section class="signup-section section" id="signup">
     <div class="container">
-      <div class="text-center mb-12">
-        <div class="eyebrow inline-flex">Get Involved</div>
-        <h2 class="section-h mt-3 mb-4">First Responder &amp; Vendor Sign-Up</h2>
-        <p style="color:var(--muted); max-width:600px; margin:0 auto; line-height:1.7; font-size:0.95rem;">
-          Are you a first responder agency, veteran organization, food vendor, community group, or local partner? Tell us how you want to show up.
+      <div class="tc" style="margin-bottom:56px;">
+        <div class="eyebrow" style="justify-content:center;">Get Involved</div>
+        <h2 class="section-h" style="margin-bottom:16px;">First Responder &amp; Vendor Sign-Up</h2>
+        <p style="color:var(--muted);max-width:580px;margin:0 auto;line-height:1.75;font-size:0.95rem;">
+          First responder agency, veteran org, food vendor, community group, business sponsor — tell us how you want to show up.
         </p>
       </div>
 
-      <div class="form-shell">
-        <form action="https://formsubmit.co/founderyworks@gmail.com" method="POST">
-          
-          <input type="hidden" name="_subject" value="New Forged to Protect Participation Form">
-          <input type="hidden" name="_template" value="table">
-          <input type="hidden" name="_captcha" value="false">
-          <input type="hidden" name="_next" value="https://forgedtoprotect.com/#signup">
+```
+  <div class="form-shell">
+    <form action="https://formsubmit.co/founderyworks@gmail.com" method="POST">
+      <input type="hidden" name="_subject" value="New Forged to Protect Participation Form">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_next" value="https://forgedtoprotect.com/#signup">
 
-          <div class="form-grid">
-            <div class="field">
-              <label for="name">Contact Name</label>
-              <input type="text" id="name" name="Contact Name" autocomplete="name" placeholder="Your full name" required />
-            </div>
-
-            <div class="field">
-              <label for="organization">Organization / Department</label>
-              <input type="text" id="organization" name="Organization / Department" autocomplete="organization" placeholder="Fire Dept., EMS, Business, etc." required />
-            </div>
-
-            <div class="field">
-              <label for="email">Email Address</label>
-              <input type="email" id="email" name="Email Address" autocomplete="email" placeholder="you@example.com" required />
-            </div>
-
-            <div class="field">
-              <label for="phone">Phone Number</label>
-              <input type="tel" id="phone" name="Phone Number" autocomplete="tel" placeholder="Best number to reach you" />
-            </div>
-
-            <div class="field form-full">
-              <label for="type">How Would You Like to Participate?</label>
-              <select id="type" name="Participation Type" required>
-                <option value="">Select one…</option>
-                <option value="First Responder Department">First Responder Department</option>
-                <option value="Veteran Organization">Veteran Organization</option>
-                <option value="Emergency Vehicle / Touch-a-Truck">Emergency Vehicle / Touch-a-Truck</option>
-                <option value="Food Vendor">Food Vendor</option>
-                <option value="Community Vendor">Community Vendor</option>
-                <option value="Business Sponsor">Business Sponsor</option>
-                <option value="Donation / Food Support">Donation / Food Support</option>
-                <option value="Volunteer">Volunteer</option>
-                <option value="Other">Other</option>
-              </select>
-            </div>
-
-            <div class="field form-full">
-              <label for="details">What Will You Bring, Offer, or Donate?</label>
-              <textarea id="details" name="What They Will Bring / Offer / Donate" placeholder="Fire truck, ambulance, K-9 demo, food booth, drinks, giveaway, veteran resource table, etc." required></textarea>
-            </div>
-
-            <div class="field form-full">
-              <label for="needs">Do You Need Anything From Us?</label>
-              <textarea id="needs" name="Needs From Us" placeholder="Table, outlet, parking space, setup time, special instructions…"></textarea>
-            </div>
-
-            <div class="form-full">
-              <button type="submit" class="submit-btn">Submit Participation Form</button>
-            </div>
-          </div>
-        </form>
+      <div class="form-grid">
+        <div class="field">
+          <label for="name">Contact Name</label>
+          <input type="text" id="name" name="Contact Name" autocomplete="name" placeholder="Your full name" required />
+        </div>
+        <div class="field">
+          <label for="organization">Organization / Department</label>
+          <input type="text" id="organization" name="Organization / Department" autocomplete="organization" placeholder="Fire Dept., EMS, Business, etc." required />
+        </div>
+        <div class="field">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="Email Address" autocomplete="email" placeholder="you@example.com" required />
+        </div>
+        <div class="field">
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" name="Phone Number" autocomplete="tel" placeholder="Best number to reach you" />
+        </div>
+        <div class="field form-full">
+          <label for="type">How Would You Like to Participate?</label>
+          <select id="type" name="Participation Type" required>
+            <option value="">Select one…</option>
+            <option value="Title Sponsor ($500)">🌟 Title Sponsor ($500)</option>
+            <option value="First Responder Department">First Responder Department</option>
+            <option value="Veteran Organization">Veteran Organization</option>
+            <option value="Emergency Vehicle / Touch-a-Truck">Emergency Vehicle / Touch-a-Truck</option>
+            <option value="Food Vendor">Food Vendor</option>
+            <option value="Community Vendor">Community Vendor</option>
+            <option value="Business Sponsor">Business Sponsor</option>
+            <option value="Donation / Food Support">Donation / Food Support</option>
+            <option value="Volunteer">Volunteer</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+        <div class="field form-full">
+          <label for="details">What Will You Bring, Offer, or Donate?</label>
+          <textarea id="details" name="What They Will Bring / Offer / Donate" placeholder="Fire truck, ambulance, K-9 demo, food booth, drinks, giveaway, veteran resource table, $500 title sponsorship, etc." required></textarea>
+        </div>
+        <div class="field form-full">
+          <label for="needs">Do You Need Anything From Us?</label>
+          <textarea id="needs" name="Needs From Us" placeholder="Table, outlet, parking space, setup time, sponsor details, special instructions…"></textarea>
+        </div>
+        <div class="form-full">
+          <button type="submit" class="submit-btn">Submit Participation Form →</button>
+        </div>
       </div>
-    </div>
+    </form>
+  </div>
+</div>
+```
+
   </section>
+
+  <!-- FOOTER -->
 
   <footer>
     <div class="footer-logo">Forged to <span>Protect</span></div>
     <div class="footer-divider"></div>
     <p>Hosted at <strong>The Foundery Church</strong> · Wellsburg, WV</p>
-    <p class="mt-4">
-      Questions? <a href="mailto:office@thefoundery.church">office@thefoundery.church</a> &nbsp;|&nbsp;
+    <p style="margin-top:12px;">
+      Questions? &nbsp;<a href="mailto:office@thefoundery.church">office@thefoundery.church</a>
+      &nbsp;|&nbsp;
       <a href="mailto:founderyworks@gmail.com">founderyworks@gmail.com</a>
     </p>
-    <p class="footer-copyright">
-      © 2026 Forged to Protect · The Foundery Church · All Rights Reserved
-    </p>
+
+```
+<div class="star-divider" style="margin-top:32px;max-width:400px;margin-left:auto;margin-right:auto;">
+  STRONGER TOGETHER · FOREVER GRATEFUL
+</div>
+
+<p class="footer-copy">© 2026 Forged to Protect · The Foundery Church · All Rights Reserved</p>
+```
+
   </footer>
 
   <script>
@@ -1700,9 +1719,9 @@
         if (dist <= 0) {
           clearInterval(tick);
           document.getElementById('countdown').innerHTML =
-            `<div style="font-family:'Barlow Condensed',sans-serif;font-size:2.5rem;font-weight:900;color:var(--gold);letter-spacing:2px;text-transform:uppercase;">
+            `<div style="font-family:'Bebas Neue',sans-serif;font-size:3rem;letter-spacing:4px;color:var(--amber);text-transform:uppercase;">
               Happening Now
-             </div>`;
+            </div>`;
           return;
         }
 
