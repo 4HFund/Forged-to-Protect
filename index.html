@@ -47,6 +47,20 @@
       opacity: 0.4;
     }
 
+    /* ─── SCROLL REVEAL ANIMATIONS ─── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .delay-100 { transition-delay: 100ms; }
+    .delay-200 { transition-delay: 200ms; }
+    .delay-300 { transition-delay: 300ms; }
+
     /* ─── NAV ─── */
     nav {
       position: fixed;
@@ -58,16 +72,25 @@
       padding: 16px 40px;
       background: rgba(6,9,26,0.88);
       backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
       border-bottom: 1px solid rgba(249,115,22,0.15);
+      transition: padding 0.3s ease;
     }
 
     .nav-logo {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: 1.4rem;
+      font-size: clamp(1.2rem, 3vw, 1.4rem);
       letter-spacing: 3px;
       color: var(--white);
+      text-decoration: none;
     }
     .nav-logo span { color: var(--orange); }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
 
     .nav-links {
       display: flex;
@@ -82,22 +105,30 @@
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 1.8px;
-      transition: color 0.2s;
+      transition: color 0.2s, transform 0.2s;
     }
-    .nav-links a:hover { color: var(--white); }
+    .nav-links a:hover { 
+      color: var(--white); 
+      transform: translateY(-2px);
+    }
 
     .nav-cta {
-      background: var(--orange) !important;
+      background: linear-gradient(135deg, var(--orange), #ea580c) !important;
       color: var(--white) !important;
-      padding: 9px 22px;
+      padding: 10px 24px;
       border-radius: 4px;
       font-size: 0.75rem !important;
       font-weight: 800 !important;
       letter-spacing: 2px !important;
       text-transform: uppercase;
-      transition: background 0.2s !important;
+      text-decoration: none;
+      transition: all 0.3s ease !important;
+      box-shadow: 0 4px 15px rgba(249,115,22,0.3);
     }
-    .nav-cta:hover { background: #ea580c !important; }
+    .nav-cta:hover { 
+      box-shadow: 0 6px 20px rgba(249,115,22,0.5);
+      transform: translateY(-2px);
+    }
 
     /* ─── HERO ─── */
     .hero {
@@ -121,7 +152,6 @@
         linear-gradient(180deg, #06091a 0%, #0d1120 100%);
     }
 
-    /* diagonal stripes */
     .hero-bg::after {
       content: '';
       position: absolute;
@@ -135,21 +165,20 @@
       );
     }
 
-    /* animated light sweep */
     .hero-sweep {
       position: absolute;
       top: -30%;
       left: -20%;
       width: 60%;
       height: 160%;
-      background: linear-gradient(105deg, transparent 40%, rgba(249,115,22,0.06) 50%, transparent 60%);
+      background: linear-gradient(105deg, transparent 40%, rgba(249,115,22,0.08) 50%, transparent 60%);
       animation: sweep 8s ease-in-out infinite alternate;
       pointer-events: none;
     }
 
     @keyframes sweep {
       from { transform: translateX(-10%) rotate(-5deg); }
-      to   { transform: translateX(60%) rotate(-5deg); }
+      to   { transform: translateX(80%) rotate(-5deg); }
     }
 
     .hero-content {
@@ -159,7 +188,6 @@
       width: 100%;
     }
 
-    /* event badge */
     .event-badge {
       display: inline-flex;
       align-items: center;
@@ -167,13 +195,14 @@
       background: rgba(249,115,22,0.1);
       border: 1px solid rgba(249,115,22,0.5);
       color: var(--amber);
-      padding: 7px 20px;
-      border-radius: 2px;
+      padding: 8px 22px;
+      border-radius: 50px;
       font-size: 0.7rem;
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 3px;
       margin-bottom: 30px;
+      box-shadow: 0 0 20px rgba(249,115,22,0.15);
     }
     .event-badge::before, .event-badge::after {
       content: '★';
@@ -181,10 +210,9 @@
       opacity: 0.7;
     }
 
-    /* main title */
     .hero-title {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(5rem, 18vw, 14rem);
+      font-size: clamp(3.8rem, 15vw, 14rem);
       line-height: 0.85;
       letter-spacing: 4px;
       margin-bottom: 16px;
@@ -195,13 +223,13 @@
     .hero-title .line2 {
       display: block;
       color: transparent;
-      -webkit-text-stroke: 2px var(--orange);
-      text-shadow: 0 0 80px rgba(249,115,22,0.4);
+      -webkit-text-stroke: clamp(1px, 0.5vw, 2px) var(--orange);
+      text-shadow: 0 0 60px rgba(249,115,22,0.5);
     }
 
     .hero-subtitle {
       font-family: 'Barlow Condensed', sans-serif;
-      font-size: clamp(1rem, 3vw, 1.5rem);
+      font-size: clamp(0.9rem, 2.5vw, 1.5rem);
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 4px;
@@ -211,37 +239,37 @@
     .hero-subtitle span { color: var(--amber); }
 
     .hero-desc {
-      font-size: clamp(1rem, 1.8vw, 1.15rem);
-      color: rgba(255,255,255,0.75);
+      font-size: clamp(0.95rem, 1.8vw, 1.15rem);
+      color: rgba(255,255,255,0.85);
       max-width: 680px;
       margin: 0 auto 36px;
       line-height: 1.85;
     }
 
-    /* shared animation */
-    @keyframes pulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.5; transform: scale(0.7); }
-    }
-
-    /* detail strip */
     .detail-strip {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 0;
+      gap: 8px;
       margin-bottom: 44px;
     }
     .ds-item {
       display: flex;
       align-items: center;
       gap: 12px;
-      padding: 16px 28px;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.07);
-      margin: 2px;
+      padding: 16px 24px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 8px;
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
+      transition: transform 0.3s, background 0.3s;
     }
-    .ds-icon { font-size: 1.2rem; }
+    .ds-item:hover {
+      transform: translateY(-3px);
+      background: rgba(255,255,255,0.06);
+    }
+    .ds-icon { font-size: 1.4rem; }
     .ds-label {
       display: block;
       font-size: 0.62rem;
@@ -249,20 +277,19 @@
       text-transform: uppercase;
       letter-spacing: 2px;
       color: var(--orange);
-      margin-bottom: 2px;
+      margin-bottom: 4px;
     }
     .ds-val {
       font-family: 'Barlow Condensed', sans-serif;
-      font-size: 1.05rem;
+      font-size: 1.1rem;
       font-weight: 700;
     }
 
-    /* countdown */
     .countdown {
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 8px;
+      gap: 12px;
       margin-bottom: 48px;
     }
     .cd-unit {
@@ -272,96 +299,98 @@
     }
     .cd-num {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(2.8rem, 7vw, 5.5rem);
+      font-size: clamp(2.5rem, 8vw, 5.5rem);
       letter-spacing: 2px;
       line-height: 1;
       color: var(--white);
       background: rgba(255,255,255,0.05);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
       border: 1px solid rgba(255,255,255,0.1);
-      border-top: 2px solid var(--orange);
-      width: 100px;
-      height: 100px;
+      border-top: 3px solid var(--orange);
+      border-radius: 8px;
+      width: clamp(70px, 15vw, 110px);
+      height: clamp(70px, 15vw, 110px);
       display: flex;
       align-items: center;
       justify-content: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
     }
     .cd-label {
-      font-size: 0.6rem;
+      font-size: 0.65rem;
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 3px;
       color: var(--muted);
-      margin-top: 8px;
+      margin-top: 12px;
     }
     .cd-sep {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: 3.5rem;
+      font-size: clamp(2rem, 6vw, 3.5rem);
       color: var(--orange);
-      opacity: 0.5;
-      margin-top: -18px;
-      padding: 0 4px;
+      opacity: 0.6;
+      margin-top: -24px;
     }
 
-    /* buttons */
     .btn-row {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 14px;
+      gap: 16px;
     }
     .btn {
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       gap: 8px;
       padding: 16px 36px;
       font-family: 'Barlow Condensed', sans-serif;
-      font-size: 1rem;
+      font-size: 1.05rem;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 2px;
       text-decoration: none;
-      border-radius: 2px;
-      transition: all 0.25s;
+      border-radius: 4px;
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
     .btn-primary {
-      background: var(--orange);
+      background: linear-gradient(135deg, var(--orange), #ea580c);
       color: white;
-      box-shadow: 0 0 40px rgba(249,115,22,0.35);
+      box-shadow: 0 10px 30px rgba(249,115,22,0.3);
     }
     .btn-primary:hover {
-      background: #ea580c;
-      transform: translateY(-3px);
-      box-shadow: 0 20px 50px rgba(249,115,22,0.5);
+      transform: translateY(-4px);
+      box-shadow: 0 15px 40px rgba(249,115,22,0.5);
     }
     .btn-ghost {
-      border: 1px solid rgba(255,255,255,0.25);
+      border: 1px solid rgba(255,255,255,0.3);
       color: white;
+      backdrop-filter: blur(5px);
     }
     .btn-ghost:hover {
-      background: rgba(255,255,255,0.06);
-      transform: translateY(-3px);
+      background: rgba(255,255,255,0.1);
+      transform: translateY(-4px);
     }
     .btn-gold {
       background: linear-gradient(135deg, var(--amber), var(--gold));
       color: #111;
       font-weight: 800;
-      box-shadow: 0 0 40px rgba(212,160,23,0.4);
+      box-shadow: 0 10px 30px rgba(212,160,23,0.3);
     }
     .btn-gold:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 20px 50px rgba(212,160,23,0.5);
+      transform: translateY(-4px);
+      box-shadow: 0 15px 40px rgba(212,160,23,0.5);
     }
 
-    /* scroll hint */
     .scroll-hint {
       position: absolute;
-      bottom: 28px;
+      bottom: 24px;
       left: 50%;
       transform: translateX(-50%);
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 6px;
+      gap: 8px;
       color: var(--muted);
       font-size: 0.65rem;
       font-weight: 800;
@@ -372,73 +401,61 @@
     }
     .scroll-hint::after {
       content: '';
-      width: 1px;
+      width: 2px;
       height: 40px;
       background: linear-gradient(to bottom, var(--muted), transparent);
+      border-radius: 2px;
     }
     @keyframes bob {
       0%, 100% { transform: translateX(-50%) translateY(0); }
-      50% { transform: translateX(-50%) translateY(8px); }
+      50% { transform: translateX(-50%) translateY(10px); }
     }
 
     /* ─── SHARED SECTION STYLES ─── */
-    .section { padding: 100px 24px; }
+    .section { padding: 120px 24px; }
     .container { max-width: 1160px; margin: 0 auto; width: 100%; }
 
     .eyebrow {
       display: inline-flex;
       align-items: center;
       gap: 14px;
-      font-size: 0.68rem;
+      font-size: 0.7rem;
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 4px;
       color: var(--orange);
-      margin-bottom: 20px;
+      margin-bottom: 24px;
     }
     .eyebrow::before, .eyebrow::after {
       content: '';
-      width: 36px;
-      height: 1px;
+      width: 40px;
+      height: 2px;
       background: var(--orange);
+      border-radius: 2px;
     }
 
     .section-h {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(2.8rem, 7vw, 5.5rem);
+      font-size: clamp(2.8rem, 8vw, 5.5rem);
       letter-spacing: 2px;
-      line-height: 0.9;
+      line-height: 0.95;
     }
     .section-sub {
       max-width: 700px;
-      margin: 18px auto 0;
+      margin: 20px auto 0;
       color: var(--muted);
       line-height: 1.8;
-      font-size: 1rem;
+      font-size: 1.05rem;
     }
     .tc { text-align: center; }
 
-    /* ─── SPONSOR SECTION (HERO-LEVEL URGENCY) ─── */
+    /* ─── SPONSOR SECTION ─── */
     .sponsor-section {
       background: var(--deep);
       border-top: 3px solid var(--orange);
       position: relative;
       overflow: hidden;
       padding: 0;
-    }
-
-    .sponsor-section::before {
-      content: 'SPONSOR';
-      position: absolute;
-      right: -60px;
-      top: 50%;
-      transform: translateY(-50%);
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 22rem;
-      color: rgba(249,115,22,0.04);
-      pointer-events: none;
-      line-height: 1;
-      letter-spacing: 10px;
     }
 
     .sponsor-inner {
@@ -449,7 +466,7 @@
 
     .sponsor-left {
       background: linear-gradient(135deg, #7f1d1d 0%, #c2410c 40%, #92400e 100%);
-      padding: 80px 60px;
+      padding: clamp(60px, 8vw, 100px) clamp(30px, 6vw, 60px);
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -463,34 +480,25 @@
       inset: 0;
       background: repeating-linear-gradient(
         45deg, transparent, transparent 50px,
-        rgba(0,0,0,0.08) 50px, rgba(0,0,0,0.08) 51px
+        rgba(0,0,0,0.06) 50px, rgba(0,0,0,0.06) 51px
       );
-    }
-
-    .sponsor-left::after {
-      content: '';
-      position: absolute;
-      bottom: -80px;
-      right: -80px;
-      width: 300px;
-      height: 300px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.04);
     }
 
     .sponsor-left > * { position: relative; z-index: 1; }
 
     .sponsor-tag {
       display: inline-block;
-      background: rgba(0,0,0,0.3);
+      background: rgba(0,0,0,0.4);
       border: 1px solid rgba(255,255,255,0.2);
-      color: rgba(255,255,255,0.9);
-      padding: 6px 16px;
-      font-size: 0.68rem;
+      color: rgba(255,255,255,0.95);
+      padding: 8px 18px;
+      border-radius: 50px;
+      font-size: 0.7rem;
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 3px;
       margin-bottom: 24px;
+      align-self: flex-start;
     }
 
     .sponsor-need {
@@ -499,33 +507,33 @@
       letter-spacing: 2px;
       line-height: 0.9;
       color: white;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
 
     .sponsor-amount {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(5rem, 12vw, 9rem);
+      font-size: clamp(5rem, 15vw, 10rem);
       letter-spacing: -2px;
       line-height: 0.85;
       color: var(--amber);
-      text-shadow: 0 0 60px rgba(245,158,11,0.5);
+      text-shadow: 0 0 60px rgba(245,158,11,0.6);
       margin-bottom: 4px;
     }
 
     .sponsor-type {
       font-family: 'Barlow Condensed', sans-serif;
-      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-size: clamp(1.8rem, 5vw, 3.5rem);
       font-weight: 900;
       text-transform: uppercase;
       letter-spacing: 4px;
-      color: rgba(255,255,255,0.9);
+      color: rgba(255,255,255,0.95);
       margin-bottom: 28px;
     }
 
     .sponsor-impact {
       font-size: 1.05rem;
-      line-height: 1.75;
-      color: rgba(255,255,255,0.85);
+      line-height: 1.8;
+      color: rgba(255,255,255,0.9);
       margin-bottom: 24px;
     }
     .sponsor-impact strong { color: var(--amber); }
@@ -533,19 +541,20 @@
     .sponsor-urgency {
       display: flex;
       align-items: center;
-      gap: 12px;
-      background: rgba(0,0,0,0.3);
-      border-left: 3px solid var(--amber);
-      padding: 14px 18px;
+      gap: 16px;
+      background: rgba(0,0,0,0.35);
+      border-left: 4px solid var(--amber);
+      padding: 16px 22px;
+      border-radius: 0 8px 8px 0;
       margin-bottom: 32px;
       font-size: 0.95rem;
       font-weight: 600;
-      line-height: 1.5;
+      line-height: 1.6;
       color: rgba(255,255,255,0.95);
     }
 
     .sponsor-right {
-      padding: 80px 60px;
+      padding: clamp(60px, 8vw, 100px) clamp(30px, 6vw, 60px);
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -554,59 +563,64 @@
 
     .perks-title {
       font-family: 'Barlow Condensed', sans-serif;
-      font-size: 0.75rem;
+      font-size: 0.8rem;
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 4px;
       color: var(--orange);
-      margin-bottom: 24px;
+      margin-bottom: 28px;
     }
 
     .perk-list {
       list-style: none;
       display: grid;
-      gap: 12px;
-      margin-bottom: 32px;
+      gap: 14px;
+      margin-bottom: 36px;
     }
 
     .perk-item {
       display: flex;
-      gap: 16px;
+      gap: 18px;
       align-items: flex-start;
-      padding: 18px 20px;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.07);
-      border-left: 3px solid var(--orange);
-      transition: background 0.2s;
+      padding: 20px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-left: 4px solid var(--orange);
+      border-radius: 4px;
+      transition: background 0.3s, transform 0.3s;
     }
-    .perk-item:hover { background: rgba(249,115,22,0.06); }
+    .perk-item:hover { 
+      background: rgba(249,115,22,0.08); 
+      transform: translateX(4px);
+    }
 
     .perk-icon {
-      font-size: 1.3rem;
+      font-size: 1.4rem;
       flex-shrink: 0;
-      margin-top: 2px;
     }
 
     .perk-text strong {
       display: block;
-      font-size: 0.95rem;
+      font-size: 1rem;
       font-weight: 700;
-      margin-bottom: 4px;
+      margin-bottom: 6px;
+      color: var(--white);
     }
     .perk-text span {
-      font-size: 0.84rem;
+      font-size: 0.9rem;
       color: var(--muted);
-      line-height: 1.5;
+      line-height: 1.6;
     }
 
     .sponsor-thanks {
       padding: 24px;
       background: rgba(249,115,22,0.05);
       border: 1px dashed rgba(249,115,22,0.3);
-      font-size: 0.9rem;
+      border-radius: 8px;
+      font-size: 0.95rem;
       line-height: 1.6;
-      color: rgba(255,255,255,0.8);
-      margin-bottom: 24px;
+      color: rgba(255,255,255,0.85);
+      margin-bottom: 32px;
     }
     .sponsor-thanks strong { color: var(--orange); }
 
@@ -615,25 +629,12 @@
       background: var(--cream);
       color: var(--navy);
       position: relative;
-      overflow: hidden;
-    }
-    .about-section::before {
-      content: 'HONOR';
-      position: absolute;
-      right: -60px;
-      top: 50%;
-      transform: translateY(-50%);
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 20rem;
-      color: rgba(8,14,26,0.035);
-      pointer-events: none;
-      line-height: 1;
     }
 
     .about-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 70px;
+      gap: 80px;
       align-items: center;
     }
 
@@ -642,97 +643,87 @@
       display: inline-flex;
       align-items: center;
       gap: 14px;
-      font-size: 0.68rem;
+      font-size: 0.7rem;
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 4px;
       color: var(--crimson);
-      margin-bottom: 20px;
+      margin-bottom: 24px;
     }
     .about-eyebrow::before, .about-eyebrow::after {
       content: '';
-      width: 36px;
-      height: 1px;
+      width: 40px;
+      height: 2px;
       background: var(--crimson);
     }
 
     .about-text p {
-      font-size: 1.08rem;
+      font-size: 1.1rem;
       line-height: 1.9;
       color: #374151;
-      margin-bottom: 20px;
+      margin-bottom: 24px;
     }
 
-    .feat-list { display: grid; gap: 18px; }
+    .feat-list { display: grid; gap: 20px; }
 
     .feat-card {
       display: flex;
-      gap: 20px;
+      gap: 24px;
       align-items: flex-start;
       background: white;
-      padding: 24px;
-      border-top: 3px solid var(--orange);
-      box-shadow: 0 8px 40px rgba(8,14,26,0.07);
-      transition: transform 0.2s, box-shadow 0.2s;
+      padding: 30px;
+      border-radius: 8px;
+      border-top: 4px solid var(--orange);
+      box-shadow: 0 10px 40px rgba(8,14,26,0.06);
+      transition: transform 0.3s, box-shadow 0.3s;
     }
     .feat-card:hover {
-      transform: translateY(-4px);
+      transform: translateY(-6px);
       box-shadow: 0 20px 50px rgba(8,14,26,0.12);
     }
     .feat-icon {
-      width: 52px; height: 52px;
+      width: 60px; height: 60px;
+      border-radius: 12px;
       background: linear-gradient(135deg, var(--orange), var(--amber));
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.5rem;
+      font-size: 1.8rem;
       flex-shrink: 0;
+      box-shadow: 0 8px 20px rgba(249,115,22,0.3);
     }
     .feat-card h3 {
       font-family: 'Barlow Condensed', sans-serif;
-      font-size: 1.2rem;
+      font-size: 1.3rem;
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 1px;
-      margin-bottom: 6px;
+      margin-bottom: 8px;
       color: var(--navy);
     }
-    .feat-card p { font-size: 0.9rem; color: #6b7280; line-height: 1.65; }
+    .feat-card p { font-size: 0.95rem; color: #4b5563; line-height: 1.7; }
 
     /* ─── CONFIRMED ─── */
     .confirmed-section {
       background: var(--steel);
       position: relative;
-      overflow: hidden;
-    }
-    .confirmed-section::before {
-      content: 'CONFIRMED';
-      position: absolute;
-      top: 40px;
-      left: 50%;
-      transform: translateX(-50%);
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(4rem, 14vw, 12rem);
-      color: rgba(255,255,255,0.025);
-      letter-spacing: 8px;
-      pointer-events: none;
-      white-space: nowrap;
     }
 
     .lineup-grid {
       margin-top: 60px;
       display: grid;
       grid-template-columns: 1.1fr 1fr;
-      gap: 24px;
+      gap: 30px;
     }
 
     .lineup-card {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.07);
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
       border-top: 3px solid var(--orange);
-      padding: 36px;
-      position: relative;
-      overflow: hidden;
+      border-radius: 8px;
+      padding: 40px;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
     }
 
     .card-top {
@@ -740,9 +731,9 @@
       align-items: center;
       justify-content: space-between;
       gap: 16px;
-      margin-bottom: 28px;
+      margin-bottom: 30px;
       padding-bottom: 20px;
-      border-bottom: 1px solid rgba(255,255,255,0.07);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
     }
     .card-top h3 {
       font-family: 'Barlow Condensed', sans-serif;
@@ -755,99 +746,111 @@
     .badge-confirmed {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      background: rgba(34,197,94,0.1);
-      border: 1px solid rgba(34,197,94,0.3);
+      gap: 8px;
+      background: rgba(34,197,94,0.15);
+      border: 1px solid rgba(34,197,94,0.4);
       color: #86efac;
-      padding: 6px 14px;
-      font-size: 0.68rem;
+      padding: 6px 16px;
+      border-radius: 50px;
+      font-size: 0.7rem;
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 1.5px;
       white-space: nowrap;
+      box-shadow: 0 0 15px rgba(34,197,94,0.2);
     }
 
-    .responder-list { list-style: none; display: grid; gap: 10px; }
+    .responder-list { list-style: none; display: grid; gap: 12px; }
     .responder-list li {
       display: flex;
-      gap: 12px;
+      gap: 14px;
       align-items: center;
-      padding: 14px 18px;
+      padding: 16px 20px;
       background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: 6px;
       font-weight: 600;
-      font-size: 0.97rem;
+      font-size: 1rem;
+      transition: background 0.2s, transform 0.2s;
     }
-    .check { color: var(--green); font-weight: 900; }
+    .responder-list li:hover {
+      background: rgba(255,255,255,0.08);
+      transform: translateX(4px);
+    }
+    .check { 
+      color: var(--green); 
+      font-weight: 900; 
+      font-size: 1.1rem;
+      text-shadow: 0 0 10px rgba(34,197,94,0.5);
+    }
 
     .hope-note {
-      margin-top: 18px;
+      margin-top: 24px;
       color: var(--muted);
-      font-size: 0.88rem;
+      font-size: 0.9rem;
       line-height: 1.7;
       font-style: italic;
+      padding: 16px;
+      background: rgba(0,0,0,0.2);
+      border-radius: 6px;
     }
 
     .vendor-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 10px;
+      gap: 12px;
       margin-top: 0;
     }
 
     .vendor-pill {
-      padding: 14px 16px;
+      padding: 16px 20px;
       background: rgba(255,255,255,0.04);
       border: 1px solid rgba(255,255,255,0.06);
-      min-height: 72px;
+      border-radius: 6px;
+      min-height: 80px;
       display: flex;
       flex-direction: column;
       justify-content: center;
+      transition: all 0.3s;
     }
-    .vendor-pill strong { display: block; font-size: 0.9rem; margin-bottom: 3px; }
-    .vendor-pill span { font-size: 0.78rem; color: var(--muted); line-height: 1.4; }
+    .vendor-pill:hover {
+      background: rgba(249,115,22,0.08);
+      border-color: rgba(249,115,22,0.3);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+    .vendor-pill strong { display: block; font-size: 0.95rem; margin-bottom: 4px; color: var(--white); }
+    .vendor-pill span { font-size: 0.8rem; color: var(--muted); line-height: 1.5; }
 
     /* ─── MUSIC ─── */
     .music-section {
       background: var(--cream);
       color: var(--navy);
-      overflow: hidden;
-      position: relative;
     }
-    .music-section::before {
-      content: 'MUSIC';
-      position: absolute;
-      right: -40px;
-      bottom: 10px;
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 18rem;
-      color: rgba(8,14,26,0.04);
-      pointer-events: none;
-      line-height: 1;
-    }
-
+    
     .timeline {
       margin: 60px auto 0;
       max-width: 860px;
       display: grid;
-      gap: 16px;
+      gap: 20px;
       position: relative;
       z-index: 1;
     }
 
     .music-slot {
       display: grid;
-      grid-template-columns: 150px 1fr;
+      grid-template-columns: 160px 1fr;
       background: white;
       border: 1px solid rgba(8,14,26,0.06);
-      border-left: 4px solid var(--orange);
-      box-shadow: 0 10px 40px rgba(8,14,26,0.07);
+      border-left: 5px solid var(--orange);
+      border-radius: 8px;
+      box-shadow: 0 10px 30px rgba(8,14,26,0.05);
       overflow: hidden;
-      transition: transform 0.2s, box-shadow 0.2s;
+      transition: transform 0.3s, box-shadow 0.3s;
     }
     .music-slot:hover {
-      transform: translateX(4px);
-      box-shadow: 0 16px 50px rgba(8,14,26,0.12);
+      transform: translateX(6px);
+      box-shadow: 0 15px 40px rgba(8,14,26,0.1);
     }
 
     .music-time {
@@ -858,14 +861,14 @@
       justify-content: center;
       text-align: center;
       font-family: 'Barlow Condensed', sans-serif;
-      font-size: 1.2rem;
+      font-size: 1.3rem;
       font-weight: 900;
       letter-spacing: 1px;
-      padding: 22px 10px;
+      padding: 24px 16px;
     }
 
     .music-info {
-      padding: 22px 26px 22px 20px;
+      padding: 24px 30px;
     }
     .music-info h3 {
       font-family: 'Barlow Condensed', sans-serif;
@@ -874,9 +877,9 @@
       text-transform: uppercase;
       letter-spacing: 1px;
       color: var(--navy);
-      margin-bottom: 6px;
+      margin-bottom: 8px;
     }
-    .music-info p { font-size: 0.92rem; color: #4b5563; line-height: 1.6; }
+    .music-info p { font-size: 0.95rem; color: #4b5563; line-height: 1.7; }
 
     /* ─── WHO SECTION ─── */
     .who-section { background: var(--navy); }
@@ -884,48 +887,53 @@
     .who-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 2px;
-      margin-top: 56px;
+      gap: 16px;
+      margin-top: 60px;
     }
 
     .who-card {
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.06);
-      padding: 42px 30px;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: 8px;
+      padding: 40px 32px;
       position: relative;
       overflow: hidden;
-      transition: background 0.3s;
+      transition: all 0.3s;
     }
-    .who-card:hover { background: rgba(255,255,255,0.055); }
+    .who-card:hover { 
+      background: rgba(255,255,255,0.04); 
+      transform: translateY(-4px);
+    }
 
     .who-card::after {
       content: '';
       position: absolute;
       bottom: 0; left: 0; right: 0;
-      height: 3px;
+      height: 4px;
       background: linear-gradient(90deg, var(--orange), var(--amber));
       transform: scaleX(0);
       transform-origin: left;
-      transition: transform 0.35s;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .who-card:hover::after { transform: scaleX(1); }
 
     .who-num {
       font-family: 'Bebas Neue', sans-serif;
       font-size: 5rem;
-      color: rgba(249,115,22,0.08);
+      color: rgba(249,115,22,0.1);
       line-height: 1;
       letter-spacing: 2px;
+      margin-bottom: 10px;
     }
     .who-card h3 {
       font-family: 'Barlow Condensed', sans-serif;
-      font-size: 1.4rem;
+      font-size: 1.5rem;
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 1.5px;
-      margin-bottom: 12px;
+      margin-bottom: 14px;
     }
-    .who-card p { color: var(--muted); line-height: 1.75; font-size: 0.93rem; }
+    .who-card p { color: var(--muted); line-height: 1.75; font-size: 0.95rem; }
 
     /* ─── CALLOUT BANNER ─── */
     .callout-section {
@@ -940,7 +948,7 @@
       inset: 0;
       background: repeating-linear-gradient(
         45deg, transparent, transparent 50px,
-        rgba(255,255,255,0.025) 50px, rgba(255,255,255,0.025) 51px
+        rgba(255,255,255,0.03) 50px, rgba(255,255,255,0.03) 51px
       );
     }
     .callout-inner {
@@ -956,24 +964,27 @@
     }
     .callout-inner h2 {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(2.2rem, 6vw, 4rem);
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
       letter-spacing: 2px;
-      line-height: 0.9;
+      line-height: 0.95;
     }
     .callout-inner p {
-      color: rgba(255,255,255,0.82);
+      color: rgba(255,255,255,0.85);
       max-width: 520px;
-      line-height: 1.75;
-      margin-top: 12px;
+      line-height: 1.8;
+      margin-top: 16px;
+      font-size: 1.05rem;
     }
     .btn-white {
       background: white;
       color: var(--blood);
       font-weight: 800;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
     }
     .btn-white:hover {
       background: var(--cream);
-      transform: translateY(-3px);
+      transform: translateY(-4px);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.3);
     }
 
     /* ─── FORM / SIGNUP ─── */
@@ -981,69 +992,73 @@
 
     .form-shell {
       background: var(--panel);
-      border: 1px solid rgba(255,255,255,0.07);
-      border-top: 3px solid var(--orange);
-      padding: 56px;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-top: 4px solid var(--orange);
+      border-radius: 12px;
+      padding: clamp(30px, 6vw, 60px);
       max-width: 900px;
       margin: 0 auto;
-      box-shadow: 0 60px 120px rgba(0,0,0,0.6);
+      box-shadow: 0 40px 100px rgba(0,0,0,0.5);
     }
 
     .form-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 20px;
+      gap: 24px;
     }
     .form-full { grid-column: 1 / -1; }
 
     .field label {
       display: block;
-      font-size: 0.7rem;
+      font-size: 0.75rem;
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 2px;
       color: var(--muted);
-      margin-bottom: 8px;
+      margin-bottom: 10px;
     }
     .field input,
     .field select,
     .field textarea {
       width: 100%;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.09);
-      padding: 14px 18px;
-      font-size: 0.95rem;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 6px;
+      padding: 16px 20px;
+      font-size: 1rem;
       font-family: 'Barlow', sans-serif;
       color: var(--white);
       outline: none;
-      transition: border 0.2s, background 0.2s;
+      transition: all 0.3s ease;
     }
-    .field input::placeholder, .field textarea::placeholder { color: rgba(255,255,255,0.2); }
+    .field input::placeholder, .field textarea::placeholder { color: rgba(255,255,255,0.3); }
     .field input:focus, .field select:focus, .field textarea:focus {
       border-color: var(--orange);
       background: rgba(249,115,22,0.05);
+      box-shadow: 0 0 0 4px rgba(249,115,22,0.1);
     }
     .field select option { background: #0d1420; }
-    .field textarea { min-height: 110px; resize: vertical; }
+    .field textarea { min-height: 140px; resize: vertical; }
 
     .submit-btn {
       width: 100%;
       background: linear-gradient(135deg, var(--orange), #ea580c);
       color: white;
       border: none;
-      padding: 20px 32px;
+      border-radius: 6px;
+      padding: 22px 32px;
       font-family: 'Bebas Neue', sans-serif;
-      font-size: 1.3rem;
+      font-size: 1.4rem;
       letter-spacing: 4px;
       text-transform: uppercase;
       cursor: pointer;
-      margin-top: 8px;
-      transition: all 0.25s;
-      box-shadow: 0 16px 50px rgba(249,115,22,0.35);
+      margin-top: 12px;
+      transition: all 0.3s;
+      box-shadow: 0 16px 40px rgba(249,115,22,0.25);
     }
     .submit-btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 28px 60px rgba(249,115,22,0.5);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 50px rgba(249,115,22,0.4);
     }
     .submit-btn:disabled {
       opacity: 0.7;
@@ -1055,12 +1070,12 @@
     footer {
       background: #030610;
       border-top: 1px solid rgba(255,255,255,0.05);
-      padding: 56px 24px 40px;
+      padding: 60px 24px 40px;
       text-align: center;
     }
     .footer-logo {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: 2rem;
+      font-size: 2.2rem;
       letter-spacing: 4px;
       margin-bottom: 16px;
     }
@@ -1068,27 +1083,27 @@
 
     .footer-divider {
       width: 60px;
-      height: 2px;
+      height: 3px;
+      border-radius: 2px;
       background: linear-gradient(90deg, var(--orange), var(--amber));
-      margin: 20px auto;
+      margin: 24px auto;
     }
 
-    footer p { color: var(--muted); font-size: 0.9rem; line-height: 1.9; }
-    footer a { color: var(--orange); text-decoration: none; }
+    footer p { color: var(--muted); font-size: 0.95rem; line-height: 1.9; }
+    footer a { color: var(--orange); text-decoration: none; font-weight: 600; }
     footer a:hover { text-decoration: underline; }
-    .footer-copy { margin-top: 24px; font-size: 0.75rem; opacity: 0.45; }
+    .footer-copy { margin-top: 32px; font-size: 0.8rem; opacity: 0.45; }
 
-    /* ─── STAR DIVIDER ─── */
     .star-divider {
       display: flex;
       align-items: center;
       gap: 16px;
       justify-content: center;
-      padding: 12px 0;
+      padding: 16px 0;
       color: var(--orange);
       font-size: 0.8rem;
       letter-spacing: 4px;
-      opacity: 0.5;
+      opacity: 0.6;
     }
     .star-divider::before, .star-divider::after {
       content: '';
@@ -1098,60 +1113,63 @@
       background: var(--orange);
     }
 
-    /* ─── RESPONSIVE ─── */
-    @media (max-width: 960px) {
+    /* ─── RESPONSIVE UTILITIES ─── */
+    @media (max-width: 1024px) {
       .sponsor-inner { grid-template-columns: 1fr; }
-      .sponsor-left, .sponsor-right { padding: 56px 36px; }
-      .sponsor-section::before { display: none; }
-      .about-grid, .lineup-grid { grid-template-columns: 1fr; }
-      .about-section::before { display: none; }
+      .about-grid, .lineup-grid { grid-template-columns: 1fr; gap: 40px; }
       .who-grid { grid-template-columns: repeat(2, 1fr); }
     }
 
     @media (max-width: 820px) {
-      nav { padding: 14px 16px; }
+      /* Mobile Nav Revamp */
+      nav { padding: 12px 20px; }
       .nav-links { display: none; }
+      
+      /* Make sure CTA is visible and optimized */
+      .nav-cta {
+        padding: 8px 18px;
+        font-size: 0.7rem !important;
+      }
 
-      .hero { padding: 110px 16px 80px; }
-      .hero-title { letter-spacing: 2px; }
-      .hero-title .line2 { -webkit-text-stroke-width: 1.5px; }
+      .hero { padding: 120px 20px 80px; }
+      .hero-title .line2 { -webkit-text-stroke-width: 1px; }
 
-      .detail-strip { gap: 4px; }
-      .ds-item { width: 100%; }
+      .detail-strip { gap: 8px; }
+      .ds-item { width: 100%; justify-content: center; }
 
-      .countdown { gap: 6px; flex-wrap: wrap; }
-      .cd-num { width: 72px; height: 72px; font-size: 2.5rem; }
-      .cd-sep { font-size: 2.5rem; }
+      .countdown { gap: 8px; flex-wrap: wrap; }
+      .cd-num { width: 80px; height: 80px; font-size: 2.8rem; }
+      .cd-sep { font-size: 2.8rem; margin-top: -20px; }
 
-      .btn-row { flex-direction: column; width: 100%; }
-      .btn { width: 100%; justify-content: center; }
+      .btn-row { flex-direction: column; width: 100%; gap: 12px; }
+      .btn { width: 100%; }
 
-      .section { padding: 60px 16px; }
+      .section { padding: 80px 20px; }
 
-      .sponsor-left { padding: 44px 24px; }
-      .sponsor-right { padding: 44px 24px; }
       .sponsor-amount { font-size: clamp(4rem, 20vw, 7rem); }
+      .sponsor-left, .sponsor-right { padding: 50px 24px; }
 
       .vendor-grid { grid-template-columns: 1fr; }
       .who-grid { grid-template-columns: 1fr; }
 
       .music-slot { grid-template-columns: 1fr; }
-      .music-time { justify-content: flex-start; padding: 14px 20px; }
+      .music-time { justify-content: flex-start; padding: 16px 24px; border-bottom: 1px solid rgba(255,255,255,0.05); }
 
-      .callout-inner { flex-direction: column; text-align: center; }
-      .btn-white { width: 100%; justify-content: center; }
+      .callout-inner { flex-direction: column; text-align: center; gap: 24px; }
+      .btn-white { width: 100%; }
 
-      .form-grid { grid-template-columns: 1fr; }
+      .form-grid { grid-template-columns: 1fr; gap: 16px;}
       .form-full { grid-column: 1; }
-      .form-shell { padding: 32px 20px; }
-
-      .lineup-card { padding: 24px 18px; }
-      .card-top { flex-direction: column; align-items: flex-start; }
+      
+      .lineup-card { padding: 24px 20px; }
+      .card-top { flex-direction: column; align-items: flex-start; gap: 12px; }
     }
 
     @media (max-width: 400px) {
-      .cd-num { width: 58px; height: 58px; font-size: 2rem; }
+      .cd-num { width: 65px; height: 65px; font-size: 2.2rem; }
       .cd-sep { display: none; }
+      .nav-logo { font-size: 1.1rem; }
+      .nav-cta { padding: 8px 14px; font-size: 0.65rem !important; }
     }
   </style>
 </head>
@@ -1159,22 +1177,24 @@
 
   <!-- NAV -->
   <nav>
-    <div class="nav-logo">Forged to <span>Protect</span></div>
-    <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#sponsor">Sponsor</a></li>
-      <li><a href="#confirmed">Confirmed</a></li>
-      <li><a href="#music">Music</a></li>
-      <li><a href="#signup">Get Involved</a></li>
-      <li><a href="#signup" class="nav-cta">Register Now</a></li>
-    </ul>
+    <a href="#top" class="nav-logo">Forged to <span>Protect</span></a>
+    <div class="nav-right">
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#sponsor">Sponsor</a></li>
+        <li><a href="#confirmed">Confirmed</a></li>
+        <li><a href="#music">Music</a></li>
+        <li><a href="#signup">Get Involved</a></li>
+      </ul>
+      <a href="#signup" class="nav-cta">Register Now</a>
+    </div>
   </nav>
 
   <!-- HERO -->
   <header class="hero" id="top">
     <div class="hero-bg"></div>
     <div class="hero-sweep"></div>
-    <div class="hero-content">
+    <div class="hero-content reveal">
       <div class="event-badge">This Saturday · Honoring First Responders &amp; Veterans</div>
 
       <h1 class="hero-title">
@@ -1254,7 +1274,7 @@
   </header>
 
   <!-- SPONSOR SECTION -->
-  <section class="sponsor-section" id="sponsor">
+  <section class="sponsor-section reveal" id="sponsor">
     <div class="sponsor-inner">
       <div class="sponsor-left">
         <div class="sponsor-tag">⚡ One Spot Only — Title Sponsor</div>
@@ -1267,7 +1287,6 @@
         </p>
 
         <div class="sponsor-urgency">
-          <div class="urgency-dot"></div>
           <div>We will also gladly accept <strong>any sponsorship support or donation amount</strong>. Anything raised above the cost of the event will be donated right back to the first responders who show up.</div>
         </div>
 
@@ -1278,35 +1297,35 @@
         <div class="perks-title">★ What Our Title Sponsor Receives</div>
 
         <ul class="perk-list">
-          <li class="perk-item">
+          <li class="perk-item reveal delay-100">
             <span class="perk-icon">🏷️</span>
             <div class="perk-text">
               <strong>Logo on the Event Banner</strong>
               <span>Prominent placement on the physical banner displayed at Forged to Protect.</span>
             </div>
           </li>
-          <li class="perk-item">
+          <li class="perk-item reveal delay-200">
             <span class="perk-icon">🌐</span>
             <div class="perk-text">
               <strong>Website Recognition All Year</strong>
               <span>Listed as the primary sponsor on our event website through the end of the year.</span>
             </div>
           </li>
-          <li class="perk-item">
+          <li class="perk-item reveal delay-300">
             <span class="perk-icon">📣</span>
             <div class="perk-text">
               <strong>Thanked Publicly During the Event</strong>
               <span>Your business is recognized and celebrated from the stage in front of the full crowd.</span>
             </div>
           </li>
-          <li class="perk-item">
+          <li class="perk-item reveal">
             <span class="perk-icon">📲</span>
             <div class="perk-text">
               <strong>Featured in Event Promotions</strong>
               <span>Included in social media posts, digital promotions, and community outreach.</span>
             </div>
           </li>
-          <li class="perk-item">
+          <li class="perk-item reveal">
             <span class="perk-icon">🤝</span>
             <div class="perk-text">
               <strong>First Right of Refusal Next Year</strong>
@@ -1328,7 +1347,7 @@
   </section>
 
   <!-- ABOUT -->
-  <section class="about-section section" id="about">
+  <section class="about-section section reveal" id="about">
     <div class="container">
       <div class="about-grid">
         <div class="about-text">
@@ -1342,25 +1361,25 @@
           <p>
             We believe in honoring service — military and civilian alike — not just with words but with presence, recognition, and real community celebration.
           </p>
-          <a href="#confirmed" class="btn btn-primary" style="margin-top:8px;">View Confirmed Lineup →</a>
+          <a href="#confirmed" class="btn btn-primary" style="margin-top:16px;">View Confirmed Lineup →</a>
         </div>
 
         <div class="feat-list">
-          <div class="feat-card">
+          <div class="feat-card reveal delay-100">
             <div class="feat-icon">🚒</div>
             <div>
               <h3>Touch-a-Truck</h3>
               <p>Families can meet local first responders, see emergency vehicles up close, and help kids connect with real community heroes.</p>
             </div>
           </div>
-          <div class="feat-card">
+          <div class="feat-card reveal delay-200">
             <div class="feat-icon">🎖️</div>
             <div>
               <h3>Veteran &amp; First Responder Appreciation</h3>
               <p>We recognize and celebrate those who have served through military, law enforcement, fire, EMS, dispatch, and public safety.</p>
             </div>
           </div>
-          <div class="feat-card">
+          <div class="feat-card reveal delay-300">
             <div class="feat-icon">🎵</div>
             <div>
               <h3>Food, Vendors &amp; Live Music</h3>
@@ -1373,7 +1392,7 @@
   </section>
 
   <!-- CONFIRMED -->
-  <section class="confirmed-section section" id="confirmed">
+  <section class="confirmed-section section reveal" id="confirmed">
     <div class="container">
       <div class="tc">
         <div class="eyebrow" style="justify-content:center;">Confirmed Attendance</div>
@@ -1384,7 +1403,7 @@
       </div>
 
       <div class="lineup-grid">
-        <div class="lineup-card">
+        <div class="lineup-card reveal delay-100">
           <div class="card-top">
             <h3>First Responders &amp; Agencies</h3>
             <div class="badge-confirmed">✓ Confirmed</div>
@@ -1392,6 +1411,7 @@
           <ul class="responder-list">
             <li><span class="check">✓</span> Brooke County EMS</li>
             <li><span class="check">✓</span> Brooke County Sheriff's Office</li>
+            <li><span class="check">✓</span> Beech Bottom Volunteer Fire Department</li>
             <li><span class="check">✓</span> Bethany Volunteer Fire Department</li>
             <li><span class="check">✓</span> Colliers Volunteer Fire Department</li>
             <li><span class="check">✓</span> McKinleyville Volunteer Fire Department</li>
@@ -1399,10 +1419,10 @@
           <p class="hope-note">More departments, vehicles, demonstrations, and community partners may be added as confirmations continue coming in.</p>
         </div>
 
-        <div class="lineup-card">
+        <div class="lineup-card reveal delay-200">
           <div class="card-top">
             <h3>Community Vendors</h3>
-            <div class="badge-confirmed">Local</div>
+            <div class="badge-confirmed" style="background: rgba(245,158,11,0.15); border-color: rgba(245,158,11,0.4); color: var(--amber);">Local</div>
           </div>
           <div class="vendor-grid">
             <div class="vendor-pill">
@@ -1452,7 +1472,7 @@
   </section>
 
   <!-- MUSIC -->
-  <section class="music-section section" id="music">
+  <section class="music-section section reveal" id="music">
     <div class="container">
       <div class="tc">
         <div class="about-eyebrow" style="justify-content:center;">After Party</div>
@@ -1463,28 +1483,28 @@
       </div>
 
       <div class="timeline">
-        <div class="music-slot">
+        <div class="music-slot reveal delay-100">
           <div class="music-time">4:00–4:30</div>
           <div class="music-info">
             <h3>The Foundery Worship Team</h3>
             <p>Led by Doc Roe, opening the after party with worship and community-centered music.</p>
           </div>
         </div>
-        <div class="music-slot">
+        <div class="music-slot reveal delay-200">
           <div class="music-time">4:30–5:00</div>
           <div class="music-info">
             <h3>Jim &amp; Jo-Ellen Haizlette</h3>
             <p>With support from the kids at CCA — bringing a special community performance to the event.</p>
           </div>
         </div>
-        <div class="music-slot">
+        <div class="music-slot reveal delay-300">
           <div class="music-time">5:00–5:30</div>
           <div class="music-info">
             <h3>Bill Lamb</h3>
             <p>A featured music set during the Forged to Protect after party.</p>
           </div>
         </div>
-        <div class="music-slot">
+        <div class="music-slot reveal">
           <div class="music-time">5:30–6:00</div>
           <div class="music-info">
             <h3>Kara &amp; Jace</h3>
@@ -1496,7 +1516,7 @@
   </section>
 
   <!-- WHO -->
-  <section class="who-section section" id="who">
+  <section class="who-section section reveal" id="who">
     <div class="container">
       <div class="tc">
         <div class="eyebrow" style="justify-content:center;">Everyone Has a Part to Play</div>
@@ -1504,32 +1524,32 @@
       </div>
 
       <div class="who-grid">
-        <div class="who-card">
+        <div class="who-card reveal delay-100">
           <div class="who-num">01</div>
           <h3>Families &amp; Kids</h3>
           <p>Bring the whole family. Meet local heroes, see the vehicles, enjoy the atmosphere, and show your kids what gratitude looks like in action.</p>
         </div>
-        <div class="who-card">
+        <div class="who-card reveal delay-200">
           <div class="who-num">02</div>
           <h3>First Responders</h3>
           <p>Come be honored. Bring your vehicle, run a demo, and let your community see the heart behind the badge, helmet, and uniform.</p>
         </div>
-        <div class="who-card">
+        <div class="who-card reveal delay-300">
           <div class="who-num">03</div>
           <h3>Local Businesses</h3>
           <p>Support a meaningful local event. Sponsor appreciation efforts, donate food or supplies, or set up as a community partner.</p>
         </div>
-        <div class="who-card">
+        <div class="who-card reveal delay-100">
           <div class="who-num">04</div>
           <h3>Veteran Organizations</h3>
           <p>Connect, be recognized, and share resources. We want every veteran to feel seen and celebrated.</p>
         </div>
-        <div class="who-card">
+        <div class="who-card reveal delay-200">
           <div class="who-num">05</div>
           <h3>Food Vendors</h3>
           <p>Set up your booth and serve our community. Vendor spots are limited — sign up early to reserve your space.</p>
         </div>
-        <div class="who-card">
+        <div class="who-card reveal delay-300">
           <div class="who-num">06</div>
           <h3>Volunteers &amp; Donors</h3>
           <p>Donate supplies, help with setup, or give your time. It all matters and we need you.</p>
@@ -1539,7 +1559,7 @@
   </section>
 
   <!-- CALLOUT BANNER -->
-  <section class="callout-section">
+  <section class="callout-section reveal">
     <div class="callout-inner">
       <div>
         <h2>Help Us Make This Bigger<br>Than an Event</h2>
@@ -1550,22 +1570,21 @@
   </section>
 
   <!-- SIGNUP FORM -->
-  <section class="signup-section section" id="signup">
+  <section class="signup-section section reveal" id="signup">
     <div class="container">
       <div class="tc" style="margin-bottom:56px;">
         <div class="eyebrow" style="justify-content:center;">Get Involved</div>
         <h2 class="section-h" style="margin-bottom:16px;">First Responder &amp; Vendor Sign-Up</h2>
-        <p style="color:var(--muted);max-width:580px;margin:0 auto;line-height:1.75;font-size:0.95rem;">
+        <p style="color:var(--muted);max-width:580px;margin:0 auto;line-height:1.75;font-size:1.05rem;">
           First responder agency, veteran org, food vendor, community group, business sponsor — tell us how you want to show up.
         </p>
       </div>
 
-      <div class="form-shell" id="form-container">
+      <div class="form-shell reveal" id="form-container">
         <form id="participation-form" action="https://formsubmit.co/founderyworks@gmail.com" method="POST">
           <input type="hidden" name="_subject" value="New Forged to Protect Participation Form">
           <input type="hidden" name="_template" value="table">
           <input type="hidden" name="_captcha" value="false">
-          <!-- Triggers an automated email to the submitter using the "email" field below -->
           <input type="hidden" name="_autoresponse" value="Thank you for signing up for Forged to Protect! We have received your submission details and will be in touch with you shortly. If you have immediate questions, please contact us at founderyworks@gmail.com.">
           
           <div class="form-grid">
@@ -1579,7 +1598,6 @@
             </div>
             <div class="field">
               <label for="email">Email Address</label>
-              <!-- Name changed to "email" so FormSubmit.co knows where to send the _autoresponse -->
               <input type="email" id="email" name="email" autocomplete="email" placeholder="you@example.com" required />
             </div>
             <div class="field">
@@ -1624,13 +1642,13 @@
     <div class="footer-logo">Forged to <span>Protect</span></div>
     <div class="footer-divider"></div>
     <p>Hosted at <strong>The Foundery Church</strong> · Wellsburg, WV</p>
-    <p style="margin-top:12px;">
+    <p style="margin-top:16px;">
       Questions? &nbsp;<a href="mailto:office@thefoundery.church">office@thefoundery.church</a>
       &nbsp;|&nbsp;
       <a href="mailto:founderyworks@gmail.com">founderyworks@gmail.com</a>
     </p>
 
-    <div class="star-divider" style="margin-top:32px;max-width:400px;margin-left:auto;margin-right:auto;">
+    <div class="star-divider" style="margin-top:40px;max-width:400px;margin-left:auto;margin-right:auto;">
       STRONGER TOGETHER · FOREVER GRATEFUL
     </div>
 
@@ -1639,7 +1657,29 @@
 
   <script>
     document.addEventListener("DOMContentLoaded", () => {
-      // Countdown Timer
+      
+      // 1. Scroll Reveal Animations
+      const observerOptions = {
+        root: null,
+        rootMargin: "0px",
+        threshold: 0.1
+      };
+
+      const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+
+      document.querySelectorAll('.reveal').forEach(element => {
+        observer.observe(element);
+      });
+
+
+      // 2. Countdown Timer
       const eventDate = new Date("May 16, 2026 14:00:00 GMT-0400").getTime();
 
       const tick = setInterval(() => {
@@ -1661,13 +1701,13 @@
         document.getElementById('seconds').textContent = pad(Math.floor((dist % 60000) / 1000));
       }, 1000);
 
-      // AJAX Form Submission & UI Success Message
+      // 3. AJAX Form Submission & UI Success Message
       const form = document.getElementById('participation-form');
       const formContainer = document.getElementById('form-container');
 
       if (form) {
         form.addEventListener('submit', function(e) {
-          e.preventDefault(); // Prevent standard page reload
+          e.preventDefault(); 
 
           const submitBtn = form.querySelector('.submit-btn');
           const originalBtnText = submitBtn.textContent;
@@ -1683,11 +1723,10 @@
           })
           .then(response => {
              if (response.ok) {
-                // Replace the form with a seamless Thank You message
                 formContainer.innerHTML = `
                    <div style="text-align:center; padding: 60px 20px;">
-                      <h3 style="color: var(--green); font-size: 3rem; margin-bottom: 16px; font-family: 'Bebas Neue', sans-serif; letter-spacing: 2px;">Submission Received!</h3>
-                      <p style="font-size: 1.1rem; line-height: 1.6; color: rgba(255,255,255,0.85);">
+                      <h3 style="color: var(--green); font-size: clamp(2.5rem, 6vw, 3.5rem); margin-bottom: 16px; font-family: 'Bebas Neue', sans-serif; letter-spacing: 2px;">Submission Received!</h3>
+                      <p style="font-size: 1.1rem; line-height: 1.8; color: rgba(255,255,255,0.85);">
                         Thank you for stepping up to participate in Forged to Protect.<br>
                         We have sent a confirmation email to the address you provided and will be in touch shortly.
                       </p>
